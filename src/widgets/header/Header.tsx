@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router'
+import { NavList } from '../nav-list/NavList'
 import s from './ui/header.module.scss'
 
 export const Header = () => {
@@ -7,25 +7,7 @@ export const Header = () => {
 			<div className={`container ${s.wrapper}`}>
 				<div>logo</div>
 
-				<nav>
-					<ul className={s.nav_list}>
-						<li>
-							<NavLink to={'/'} className={s.nav_list__link}>
-								Home
-							</NavLink>
-						</li>
-						<li>
-							<NavLink to={'about-us'} className={s.nav_list__link}>
-								About us
-							</NavLink>
-						</li>
-						<li>
-							<NavLink to={'mems'} className={s.nav_list__link}>
-								Mems
-							</NavLink>
-						</li>
-					</ul>
-				</nav>
+				<NavList />
 
 				<div className={s.user}>
 					<div className={s.info_user}>
