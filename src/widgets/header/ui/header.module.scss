@@ -1,0 +1,41 @@
+@import '@/styles/variables';
+
+.header {
+	padding-top: 15px;
+}
+.wrapper {
+	background-color: $bg-section;
+	border: 2px solid $black;
+	border-radius: 30px;
+	padding: 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.nav_list {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.nav_list__link {
+	font-size: 18px;
+	text-decoration: none;
+	color: $link;
+	transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+	&:hover {
+		color: $link-hover;
+	}
+}
+.user {
+	display: flex;
+	gap: 20px;
+}
+.info_user {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+// .username,
+// .email {
+// }

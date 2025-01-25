@@ -1,3 +1,7 @@
 export const Home = () => {
-	return <section>hello</section>
+	return (
+		<section>
+			<div className='container'>Main</div>
+		</section>
+	)
 }
