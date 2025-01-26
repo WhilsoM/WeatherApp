@@ -9,7 +9,7 @@ export const Home = () => {
 
 			<section className={s.home_page}>
 				<SideBar />
-
+					<p></p>
 				<article className={s.main_info}>Основная информация</article>
 			</section>
 		</section>
