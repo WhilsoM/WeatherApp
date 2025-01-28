@@ -1,12 +1,13 @@
 import s from './ui/memes.module.scss'
+import AddMemeCard from '@/features/addmemecard/AddMemeCard'
 
 
+const API_URL = 'https://67968bd6bedc5d43a6c58fc6.mockapi.io/memes'
 
 export const Memes = () => {
   return (
       <section className={`${s.about_us} container`}>
     <div className={s.main_info}>
-    <h2 className={s.main_title}>Ты опоздал Артур, я проебал твои мемы в покер!</h2>
       <div className={s.block_main}>
         <div className={s.block_first}>
           <div className={s.block_create}>
@@ -18,7 +19,7 @@ export const Memes = () => {
         </div>
         <div className={s.block_second}>
           <div>
-
+            <AddMemeCard />
           </div>
         </div>
       </div>

@@ -1,0 +1,18 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    &_txt{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+  }
+  
+  .card_wrap {
+    border-radius: 10px;
+    border: 1px solid #ccc; 
+    padding: 16px; 
+    text-align: center;
+  }

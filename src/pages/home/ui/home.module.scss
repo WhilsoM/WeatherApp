@@ -1,8 +1,12 @@
 @import '@/styles/variables';
 
 .home_page {
-	display: flex;
-	gap: 15px;
+	height: 100%;
+	&_wrapper {
+		display: flex;
+		gap: 15px;
+		height: 90%;
+	}
 }
 
 .main_info {
