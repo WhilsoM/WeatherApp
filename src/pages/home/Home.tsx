@@ -5,8 +5,10 @@ import { Search } from '@/widgets/search/Search'
 import { SideBar } from '@/widgets/sidebar/SideBar'
 import { useQuery } from '@tanstack/react-query'
 import { observer } from 'mobx-react-lite'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import s from './ui/home.module.scss'
+import humidityImg from '/humidity.png'
+import windyImg from '/windy.png'
 
 interface IWeather {
 	location: {
@@ -23,24 +25,19 @@ interface IWeather {
 			icon: string
 			text: string
 		}
+		wind_mph: number
 	}
-	wind_mph: number
 }
 
 export const Home = observer(() => {
 	const [inpValue, setInpValue] = useState<string>('Mosc')
-	const debouncedInput = useDebounce(inpValue, 1000)
+	const debouncedInput = useDebounce(inpValue, 500)
 	const { latitude, longitude } = useGeolocation()
 
 	const { data } = useQuery<IWeather>({
 		queryKey: ['weather', debouncedInput, latitude, longitude],
 		queryFn: () => getWeather(inpValue),
 	})
-
-	useEffect(() => {
-		if (debouncedInput) {
-		}
-	}, [debouncedInput])
 
 	return (
 		<section className={`${s.home_page} container`}>
@@ -49,32 +46,36 @@ export const Home = observer(() => {
 			<section className={s.home_page_wrapper}>
 				<SideBar />
 
-				<article className={s.main_info}>
-					<div>
+				<section className={s.main_info}>
+					<section className={s.main_info_inner}>
 						<h3 className={s.city}>
 							{inpValue.length < 3 ? 'Ничего не найдено' : data?.location?.name}
 						</h3>
-						<div>
-							<p>lat: {data?.location?.lat}</p>
-							<p>lon: {data?.location?.lon}</p>
-						</div>
-						<p className={s.temperature}>{data?.current?.temp_c}&deg;C</p>
-					</div>
 
-					<div className={s.cards}>
-						<div className={s.card}>ВЛАЖНОСТЬ: {data?.current?.humidity}%</div>
-						<div className={s.card}>
+						<p className={s.temperature}>{data?.current?.temp_c}&deg;C</p>
+					</section>
+
+					<section className={s.cards}>
+						<article className={s.card}>
+							<img src={humidityImg} alt='humidity' />
+
+							<h3>{data?.current?.humidity}%</h3>
+						</article>
+
+						<article className={s.card}>
 							<img
 								src={data?.current?.condition?.icon}
 								alt={data?.current?.condition?.text}
 							/>
-						</div>
-						<div className={s.card}>
-							<h2>СКОРОСТЬ ВЕТРА</h2>
-							<p>{data?.wind_mph}mph</p>
-						</div>
-					</div>
-				</article>
+							<p>погода</p>
+						</article>
+
+						<article className={s.card}>
+							<img src={windyImg} alt='speed windy' />
+							<p>{data?.current?.wind_mph}mph</p>
+						</article>
+					</section>
+				</section>
 			</section>
 		</section>
 	)
