@@ -82,7 +82,7 @@ const AddMemeCard: React.FC = () => {
       setUserName('');
       setTitle('');
     } catch (error) {
-      console.log('Мем е поменял, сорян(((', error);
+      console.log('Мем не поменял, сорян(((', error);
     }
   }
 
@@ -90,7 +90,7 @@ const AddMemeCard: React.FC = () => {
 
   return (
     <div className='qwe'>
-      <form onSubmit={editingCard ? handleUpdate : handleSubmit}>
+      <form className={s.input_block} onSubmit={editingCard ? handleUpdate : handleSubmit}>
         <input
           className={s.card_img}
           type="text"
