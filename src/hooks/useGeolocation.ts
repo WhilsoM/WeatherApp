@@ -1,27 +1,32 @@
-import { useEffect, useState } from 'react'
+import { geoStore } from '@/store/geo'
+import { useEffect } from 'react'
 
 interface IUseGeolocation {
-	coords?: {
-		latitude?: number
-		longitude?: number
-	}
+	latitude: number
+	longitude: number
 }
 
 export const useGeolocation = () => {
-	const [position, setPosition] = useState<IUseGeolocation>({})
+	const {
+		haveGeo: { setHaveGeo },
+		latitude: { setLatitude },
+		longitude: { setLongitude },
+	} = geoStore
 
-	const onChange = (coords: IUseGeolocation) => {
-		setPosition(coords)
+	const onChange = (coords: IUseGeolocation): void => {
+		setHaveGeo(true)
+		setLatitude(coords.latitude)
+		setLongitude(coords.longitude)
+	}
+
+	const onError = () => {
+		console.log('геолокация выключена')
+		setHaveGeo(false)
 	}
 
 	useEffect(() => {
 		const geo = navigator.geolocation
 
-		geo.getCurrentPosition((position) => onChange(position))
+		geo.getCurrentPosition((position) => onChange(position.coords), onError)
 	}, [])
-
-	return {
-		latitude: position.coords?.latitude,
-		longitude: position.coords?.longitude,
-	}
 }
