@@ -10,6 +10,7 @@ const AddMemeCard: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [title, setTitle] = useState('')
   const [memeCards, setMemeCards] = useState<MemeCardProps[]>([]);
+  const [editingCard, setEditingCard] = useState<MemeCardProps | null>(null);
 
   useEffect(() => {
     const fetchMemes = async () => {
@@ -54,9 +55,42 @@ const AddMemeCard: React.FC = () => {
     }
   }
 
+  const handleEdit = (card: MemeCardProps) => {
+    setEditingCard(card);
+    setImageUrl(card.imageUrl);
+    setUserName(card.userName);
+    setTitle(card.title);
+  }
+
+  const handleUpdate = async(e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!editingCard) return;
+
+    const updateMemeCard = {
+      ...editingCard,
+      imageUrl,
+      userName,
+      title
+    }
+
+    try{
+      const response = await axios.put(`${API_URL}/${editingCard.id}`, updateMemeCard);
+      setMemeCards(memeCards.map(card => card.id === editingCard.id ? response.data : card));
+      setEditingCard(null);
+      setImageUrl('');
+      setUserName('');
+      setTitle('');
+    } catch (error) {
+      console.log('Мем е поменял, сорян(((', error);
+    }
+  }
+
+
+
   return (
     <div className='qwe'>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={editingCard ? handleUpdate : handleSubmit}>
         <input
           className={s.card_img}
           type="text"
@@ -79,16 +113,18 @@ const AddMemeCard: React.FC = () => {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-        <button type="submit">Add Meme Card</button>
+        <button type="submit">{editingCard ? 'Update Meme Card' : 'Add Meme Card'}</button>
+        {editingCard && <button type="button" onClick={() => setEditingCard(null)}>Cancel</button>}
       </form>
 
       <div className={s.qwer}>
-      {memeCards.map((card, index) => (
-  <div key={index}>
-    <MemeCard id={card.id} imageUrl={card.imageUrl} userName={card.userName} createdAt={card.createdAt} title={card.title} />
-    <button onClick={() => handleDelete(card.id)}>Delete</button>
-  </div>
-))}
+        {memeCards.map((card, index) => (
+          <div key={index}>
+            <MemeCard id={card.id} imageUrl={card.imageUrl} userName={card.userName} createdAt={card.createdAt} title={card.title} />
+            <button onClick={() => handleEdit(card)}>Edit</button>
+            <button onClick={() => handleDelete(card.id)}>Delete</button>
+          </div>
+        ))}
       </div>
     </div>
   );
