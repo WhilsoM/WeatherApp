@@ -36,6 +36,10 @@ const Ad = () => {
         return () => clearInterval(interval);
     }, [ads.length]);
 
+    if (ads.length === 0) {
+        return <div>Загрузка...</div>;
+    }
+
     const currentAd = ads[currentAdIndex];
 
     return (
