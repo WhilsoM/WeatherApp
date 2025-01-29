@@ -89,7 +89,7 @@ const AddMemeCard: React.FC = () => {
 
 
   return (
-    <div className='qwe'>
+    <div className={s.qwe}>
       <form className={s.input_block} onSubmit={editingCard ? handleUpdate : handleSubmit}>
         <input
           className={s.card_img}
@@ -113,7 +113,7 @@ const AddMemeCard: React.FC = () => {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-        <button type="submit">{editingCard ? 'Update Meme Card' : 'Add Meme Card'}</button>
+        <button className={s.accept_button} type="submit">{editingCard ? 'Update Meme' : 'Add Meme'}</button>
         {editingCard && <button type="button" onClick={() => setEditingCard(null)}>Cancel</button>}
       </form>
 

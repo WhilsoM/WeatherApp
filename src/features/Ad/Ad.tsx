@@ -30,11 +30,13 @@ const Ad = () => {
   return (
     <div className={s.adContainer}>
     {ads.map((ad) => (
-      <div key={ad.id} className={s.adCard}>
+      <div key={ad.id} className={s.ad_card}>
         <img src={ad.img} className={s.ad_img}/>
-        <h2 className={s.adTitle}>{ad.title}</h2>
-        <p className={s.adText}>{ad.text}</p>
-        <Link to={'https://parad1st.github.io/Screamer/'}>Подробнее</Link>
+        <div >
+            <h2 className={s.adTitle}>{ad.title}</h2>
+            <p className={s.adText}>{ad.text}</p>
+            <Link to={ad.link}>Подробнее</Link>
+        </div>
       </div>
     ))}
   </div>
