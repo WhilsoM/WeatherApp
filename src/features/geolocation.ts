@@ -6,7 +6,7 @@ interface IUseGeolocation {
 	longitude: number
 }
 
-export const useGeolocation = () => {
+export const geolocation = () => {
 	const {
 		haveGeo: { setHaveGeo },
 		latitude: { setLatitude },

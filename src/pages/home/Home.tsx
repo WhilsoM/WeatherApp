@@ -1,12 +1,12 @@
 import { getWeather } from '@/features/getWeather'
+import { geolocation } from '@/features/useGeolocation'
 import { useDebounce } from '@/hooks/useDebounce'
-import { useGeolocation } from '@/hooks/useGeolocation'
 import { geoStore } from '@/store/geo'
 import { Search } from '@/widgets/search/Search'
 import { SideBar } from '@/widgets/sidebar/SideBar'
 import { useQuery } from '@tanstack/react-query'
 import { observer } from 'mobx-react-lite'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import s from './ui/home.module.scss'
 import humidityImg from '/humidity.png'
 import windyImg from '/windy.png'
@@ -31,9 +31,8 @@ interface IWeather {
 }
 
 export const Home = observer(() => {
-	const [inpValue, setInpValue] = useState<string>('Mosc')
+	const [inpValue, setInpValue] = useState<string>('')
 	const debouncedInput = useDebounce(inpValue, 500)
-	const pos = useGeolocation()
 
 	const {
 		latitude: { latitude },
@@ -44,6 +43,10 @@ export const Home = observer(() => {
 		queryKey: ['weather', debouncedInput, latitude, longitude],
 		queryFn: () => getWeather(inpValue),
 	})
+
+	useEffect(() => {
+		geolocation()
+	}, [])
 
 	return (
 		<section className={`${s.home_page} container`}>
