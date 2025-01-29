@@ -14,4 +14,33 @@
 	border: 2px solid $black;
 	background-color: $bg-section;
 	border-radius: 30px;
+	padding: 15px 10px;
+
+	& > div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.city {
+	font-weight: 600;
+	font-size: 25px;
+}
+.temperature {
+	font-weight: 500;
+	font-size: 20px;
+}
+
+.cards {
+	display: flex;
+	gap: 10px;
+	height: 70%;
+}
+.card {
+	border-radius: 15px;
+	border: 2px solid $black;
+	padding: 10px;
+	width: 33%;
+	height: 70%;
 }
