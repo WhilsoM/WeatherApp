@@ -37,7 +37,7 @@ const Ad = () => {
     }, [ads.length]);
 
     if (ads.length === 0) {
-        return <div>Загрузка...</div>;
+        return <div className={s.loader}>ГООООООООЛ!</div>;
     }
 
     const currentAd = ads[currentAdIndex];

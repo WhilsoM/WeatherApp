@@ -3,7 +3,6 @@ import AddMemeCard from '@/features/addmemecard/AddMemeCard'
 import Ad from '@/features/Ad/Ad'
 
 
-const API_URL = 'https://67968bd6bedc5d43a6c58fc6.mockapi.io/memes'
 
 export const Memes = () => {
   return (
