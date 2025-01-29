@@ -2,13 +2,14 @@ import React from 'react';
 import s from './ui/memecard.module.scss'
 
 export interface MemeCardProps {
+  id: string;
   imageUrl: string;
   userName: string;
   createdAt: string;
   title: string;
 }
 
-const MemeCard: React.FC<MemeCardProps> = ({ imageUrl, userName, createdAt, title }) => {
+const MemeCard: React.FC<MemeCardProps> = ({ id, imageUrl, userName, createdAt, title }) => {
   return (
   <section className={s.card}>  
     <div className={s.card_wrap}>

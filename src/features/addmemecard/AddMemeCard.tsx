@@ -3,6 +3,8 @@ import axios from 'axios';
 import MemeCard, { MemeCardProps } from '../MemeCard/MemeCard';
 import s from './ui/addmemecard.module.scss'
 
+const API_URL = 'https://67968bd6bedc5d43a6c58fc6.mockapi.io/memes'
+
 const AddMemeCard: React.FC = () => {
   const [imageUrl, setImageUrl] = useState('');
   const [userName, setUserName] = useState('');
@@ -12,7 +14,7 @@ const AddMemeCard: React.FC = () => {
   useEffect(() => {
     const fetchMemes = async () => {
       try {
-        const response = await axios.get('https://67968bd6bedc5d43a6c58fc6.mockapi.io/memes');
+        const response = await axios.get(API_URL);
         setMemeCards(response.data);
       } catch (error) {
         console.error('Ты опоздал Артур, я проебал твои мемы в покер!', error);
@@ -33,7 +35,7 @@ const AddMemeCard: React.FC = () => {
     };
 
     try {
-      const response = await axios.post('https://67968bd6bedc5d43a6c58fc6.mockapi.io/memes', newMemeCard);
+      const response = await axios.post(API_URL, newMemeCard);
       setMemeCards([...memeCards, response.data]);
       setImageUrl('');
       setUserName('');
@@ -42,6 +44,15 @@ const AddMemeCard: React.FC = () => {
       console.error('Ты опоздал юзер, я съел твой мем!', error);
     }
   };
+
+  const handleDelete = async(id: string) => {
+    try {
+      await axios.delete(`${API_URL}/${id}`);
+      setMemeCards(memeCards.filter(card => card.id !== id));
+    } catch (error){
+      console.log('Мем в покер не проебался, сори(((', error)
+    }
+  }
 
   return (
     <div className='qwe'>
@@ -72,9 +83,12 @@ const AddMemeCard: React.FC = () => {
       </form>
 
       <div className={s.qwer}>
-        {memeCards.map((card, index) => (
-          <MemeCard key={index} imageUrl={card.imageUrl} userName={card.userName} createdAt={card.createdAt} title={card.title} />
-        ))}
+      {memeCards.map((card, index) => (
+  <div key={index}>
+    <MemeCard id={card.id} imageUrl={card.imageUrl} userName={card.userName} createdAt={card.createdAt} title={card.title} />
+    <button onClick={() => handleDelete(card.id)}>Delete</button>
+  </div>
+))}
       </div>
     </div>
   );
