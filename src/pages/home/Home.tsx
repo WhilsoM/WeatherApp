@@ -1,7 +1,9 @@
-import { getWeather } from '@/features/getWeather'
 import { geolocation } from '@/features/geolocation'
+import { getWeather } from '@/features/getWeather'
 import { useDebounce } from '@/hooks/useDebounce'
-import { geoStore } from '@/store/geo'
+import { haveGeoStore } from '@/store/haveGeo'
+import { latitudeStore } from '@/store/latitude'
+import { longitudeStore } from '@/store/longitude'
 import { Search } from '@/widgets/search/Search'
 import { SideBar } from '@/widgets/sidebar/SideBar'
 import { useQuery } from '@tanstack/react-query'
@@ -31,14 +33,20 @@ interface IWeather {
 }
 
 export const Home = observer(() => {
-	const [inpValue, setInpValue] = useState<string>('')
-	const debouncedInput = useDebounce(inpValue, 500)
-
+	const {
+		haveGeo: { haveGeo },
+	} = haveGeoStore
 	const {
 		latitude: { latitude },
+	} = latitudeStore
+	const {
 		longitude: { longitude },
-	} = geoStore
+	} = longitudeStore
 
+	const [inpValue, setInpValue] = useState<string>('Moscow')
+	const debouncedInput = useDebounce(inpValue, 500)
+
+	// вынести в хук tanstack query, запрос
 	const { data } = useQuery<IWeather>({
 		queryKey: ['weather', debouncedInput, latitude, longitude],
 		queryFn: () => getWeather(inpValue),
@@ -47,6 +55,10 @@ export const Home = observer(() => {
 	useEffect(() => {
 		geolocation()
 	}, [])
+
+	useEffect(() => {
+		if (haveGeo) setInpValue('')
+	}, [haveGeo])
 
 	return (
 		<section className={`${s.home_page} container`}>
@@ -58,7 +70,14 @@ export const Home = observer(() => {
 				<section className={s.main_info}>
 					<section className={s.main_info_inner}>
 						<h3 className={s.city}>
-							{inpValue.length < 3 ? 'Ничего не найдено' : data?.location?.name}
+							{/* 
+                  юзер ввел текст - true, haveGeo - true, значит показываем город.
+                  юзер не ввел текст и не дал геолокацию свою, показываем текст 'Ничего не найдено' 
+              */}
+
+							{inpValue.length || haveGeo
+								? data?.location?.name
+								: 'Ничего не найдено'}
 						</h3>
 
 						<p className={s.temperature}>{data?.current?.temp_c}&deg;C</p>
