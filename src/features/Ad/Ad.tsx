@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import s from './ui/ad.module.scss';
 import axios from 'axios';
 import { Link } from 'react-router';
+import { useQuery } from '@tanstack/react-query';
 
 const API_URL = 'https://67968bd6bedc5d43a6c58fc6.mockapi.io/ad';
 
@@ -14,30 +15,28 @@ interface AdData {
 }
 
 const Ad = () => {
-    const [ads, setAds] = useState<AdData[]>([]);
     const [currentAdIndex, setCurrentAdIndex] = useState(0);
 
+    const { data: ads = [] } = useQuery<AdData[]>({
+        queryKey: ['ads'],
+        queryFn: async () => {
+            const response = await axios.get(API_URL);
+            return response.data
+        },
+    });
+
     useEffect(() => {
-        const fetchAds = async () => {
-            try {
-                const response = await axios.get(API_URL);
-                setAds(response.data);
-            } catch (error) {
-                console.error('Ты опоздал админ, я проебал рекламу в покер!');
-            }
-        };
+        if (ads.length > 0) {
+            const interval = setInterval(() => {
+                setCurrentAdIndex(prevIndex => (prevIndex + 1) % ads.length)
+            }, 10000)
 
-        fetchAds();
-
-        const interval = setInterval(() => {
-            setCurrentAdIndex(prevIndex => (prevIndex + 1) % ads.length);
-        },30000);
-
-        return () => clearInterval(interval);
+            return () => clearInterval(interval)
+        }
     }, [ads.length]);
 
     if (ads.length === 0) {
-        return <div className={s.loader}>ГООООООООЛ!</div>;
+        return null;
     }
 
     const currentAd = ads[currentAdIndex];

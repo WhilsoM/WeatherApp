@@ -9,7 +9,7 @@ export interface MemeCardProps {
   title: string;
 }
 
-const MemeCard: React.FC<MemeCardProps> = ({ id, imageUrl, userName, createdAt, title }) => {
+const MemeCard: React.FC<MemeCardProps> = ({ imageUrl, userName, createdAt, title }) => {
   return (
   <section className={s.card}>  
     <div className={s.card_wrap}>
