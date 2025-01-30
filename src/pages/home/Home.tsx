@@ -1,7 +1,9 @@
+import { geolocation } from '@/features/geolocation'
 import { getWeather } from '@/features/getWeather'
-import { geolocation } from '@/features/useGeolocation'
 import { useDebounce } from '@/hooks/useDebounce'
-import { geoStore } from '@/store/geo'
+import { haveGeoStore } from '@/store/haveGeo'
+import { latitudeStore } from '@/store/latitude'
+import { longitudeStore } from '@/store/longitude'
 import { Search } from '@/widgets/search/Search'
 import { SideBar } from '@/widgets/sidebar/SideBar'
 import { useQuery } from '@tanstack/react-query'
@@ -31,13 +33,19 @@ interface IWeather {
 }
 
 export const Home = observer(() => {
-	const [inpValue, setInpValue] = useState<string>('')
+	const {
+		haveGeo: { haveGeo },
+	} = haveGeoStore
+
+	const [inpValue, setInpValue] = useState<string>(haveGeo ? '' : 'Moscow')
 	const debouncedInput = useDebounce(inpValue, 500)
 
 	const {
 		latitude: { latitude },
+	} = latitudeStore
+	const {
 		longitude: { longitude },
-	} = geoStore
+	} = longitudeStore
 
 	const { data } = useQuery<IWeather>({
 		queryKey: ['weather', debouncedInput, latitude, longitude],

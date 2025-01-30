@@ -5,7 +5,7 @@ interface ISearch {
 	inpValue: string
 	setInpValue: (e: string) => void
 }
-// add feature request to server and use debounce
+
 export const Search = ({ inpValue, setInpValue }: ISearch) => {
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setInpValue(e.target.value)
