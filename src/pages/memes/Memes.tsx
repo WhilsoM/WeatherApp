@@ -26,4 +26,3 @@ export const Memes = () => {
  </section>
   )
 }
-
