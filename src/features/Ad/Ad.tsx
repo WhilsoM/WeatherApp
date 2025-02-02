@@ -1,58 +1,60 @@
-import { useEffect, useState } from 'react';
-import s from './ui/ad.module.scss';
-import axios from 'axios';
-import { Link } from 'react-router';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
+import s from './ui/ad.module.scss'
 
-const API_URL = 'https://67968bd6bedc5d43a6c58fc6.mockapi.io/ad';
+const API_URL = 'https://67968bd6bedc5d43a6c58fc6.mockapi.io/ad'
 
 interface AdData {
-    id: string,
-    img: string,
-    title: string,
-    text: string,
-    link: string,
+	id: string
+	img: string
+	title: string
+	text: string
+	link: string
 }
 
 const Ad = () => {
-    const [currentAdIndex, setCurrentAdIndex] = useState(0);
+	const [currentAdIndex, setCurrentAdIndex] = useState(0)
 
-    const { data: ads = [] } = useQuery<AdData[]>({
-        queryKey: ['ads'],
-        queryFn: async () => {
-            const response = await axios.get(API_URL);
-            return response.data
-        },
-    });
+	const { data: ads = [] } = useQuery<AdData[]>({
+		queryKey: ['ads'],
+		queryFn: async () => {
+			const response = await axios.get(API_URL)
+			return response.data
+		},
+	})
 
-    useEffect(() => {
-        if (ads.length > 0) {
-            const interval = setInterval(() => {
-                setCurrentAdIndex(prevIndex => (prevIndex + 1) % ads.length)
-            }, 10000)
+	useEffect(() => {}, []) // empty
 
-            return () => clearInterval(interval)
-        }
-    }, [ads.length]);
+	useEffect(() => {
+		if (ads.length > 0) {
+			const interval = setInterval(() => {
+				setCurrentAdIndex((prevIndex) => (prevIndex + 1) % ads.length)
+			}, 10000)
 
-    if (ads.length === 0) {
-        return null;
-    }
+			return () => clearInterval(interval)
+		}
+	}, [ads.length])
 
-    const currentAd = ads[currentAdIndex];
+	if (ads.length === 0) {
+		return
+	}
 
-    return (
-        <div className={s.adContainer}>
-            <div key={currentAd.id} className={s.ad_card}>
-                <img src={currentAd.img} className={s.ad_img} alt={currentAd.title} />
-                <div>
-                    <h2 className={s.adTitle}>{currentAd.title}</h2>
-                    <p className={s.adText}>{currentAd.text}</p>
-                    <Link to={currentAd.link}>Подробнее</Link>
-                </div>
-            </div>
-        </div>
-    );
+	const currentAd = ads[currentAdIndex]
+
+	return (
+		<div className={s.adContainer}>
+			<div key={currentAd.id} className={s.ad_card}>
+				<img src={currentAd.img} className={s.ad_img} alt={currentAd.title} />
+				<div>
+					<h2 className={s.adTitle}>{currentAd.title}</h2>
+					<p className={s.adText}>{currentAd.text}</p>
+					<Link to={currentAd.link}>Подробнее</Link>
+				</div>
+			</div>
+		</div>
+	)
 }
 
-export default Ad;
+export default Ad
