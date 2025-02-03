@@ -33,7 +33,7 @@ const AddMemeCard: React.FC = () => {
       console.error('Ты опоздал юзер, я съел твой мем!');
     },
   });
-
+ 
   const deleteMemeMutation = useMutation({
     mutationFn: (id:string) => axios.delete(`${API_URL}/${id}`),
     onSuccess: () => {
