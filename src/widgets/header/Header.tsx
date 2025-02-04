@@ -1,11 +1,12 @@
 import { NavList } from '../nav-list/NavList'
 import s from './ui/header.module.scss'
+import logo from '/logo.png'
 
 export const Header = () => {
 	return (
 		<header className={s.header}>
 			<div className={`container ${s.wrapper}`}>
-				<div>logo</div>
+				<div><img className={s.logo} src={logo} alt="logo" /></div>
 
 				<NavList />
 

@@ -16,6 +16,7 @@ interface AdData {
 
 const Ad = () => {
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
+  const [isAdVisible, setIsAdVisible] = useState(true); 
 
   const { data: ads = [] } = useQuery<AdData[]>({
     queryKey: ["ads"],
@@ -24,8 +25,6 @@ const Ad = () => {
       return response.data;
     },
   });
-
-  useEffect(() => {}, []); // empty
 
   useEffect(() => {
     if (ads.length > 0) {
@@ -37,23 +36,28 @@ const Ad = () => {
     }
   }, [ads.length]);
 
-  if (ads.length === 0) {
-    return;
+  const handleCloseAd = () => {
+    setIsAdVisible(false);
+  };
+
+  if (ads.length === 0 || !isAdVisible) {
+    return null; 
   }
- 
+
   const currentAd = ads[currentAdIndex];
 
   return (
-    
-      <div key={currentAd.id} className={s.ad_card}>
-        <img src={currentAd.img} className={s.ad_img} alt={currentAd.title} />
-        <div>
-          <h2 className={s.adTitle}>{currentAd.title}</h2>
-          <p className={s.adText}>{currentAd.text}</p>
-          <Link to={currentAd.link}>Подробнее</Link>
-        </div>
+    <div key={currentAd.id} className={s.ad_card}>
+      <img src={currentAd.img} className={s.ad_img} alt={currentAd.title} />
+      <div>
+        <h2 className={s.adTitle}>{currentAd.title}</h2>
+        <p className={s.adText}>{currentAd.text}</p>
+        <Link to={currentAd.link}>Подробнее</Link>
       </div>
-    
+      <button onClick={handleCloseAd} className={s.closeButton}>
+        &#10006;
+      </button>
+    </div>
   );
 };
 

@@ -153,8 +153,10 @@ export const AddMemeCard = () => {
               createdAt={card.createdAt}
               title={card.title}
             />
-            <button onClick={() => handleEdit(card)}>Edit</button>
-            <button onClick={() => handleDelete(card.id)}>Delete</button>
+            <div className={s.button_block}>
+              <button onClick={() => handleEdit(card)}>Edit</button>
+              <button onClick={() => handleDelete(card.id)}>Delete</button>
+            </div>
           </div>
         ))}
     </>

@@ -26,8 +26,8 @@
     }
   
     &_img {
+     
       width: 100%;
-      max-width: 250px;
       height: auto;
     }
   }
@@ -39,21 +39,7 @@
     }
   
     .card_img {
-      width: 150px;
+      width: 350px;
     }
   }
   
-  @media (min-width: 1024px) {
-    .card {
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-  
-    .card_wrap {
-      flex: 1 1 calc(33.333% - 16px);
-    }
-  
-    .card_img {
-      width: 250px;
-    }
-  }
