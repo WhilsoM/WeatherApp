@@ -110,7 +110,7 @@ export const AddMemeCard = () => {
   }
 
   return (
-    <div className={s.qwe}>
+    <>
       <form className={s.input_block} onSubmit={handleSubmit}>
         <input
           className={s.card_img}
@@ -144,7 +144,6 @@ export const AddMemeCard = () => {
         )}
       </form>
 
-      <div className={s.qwer}>
         {memeCards.map((card, index) => (
           <div key={index}>
             <MemeCard
@@ -158,7 +157,6 @@ export const AddMemeCard = () => {
             <button onClick={() => handleDelete(card.id)}>Delete</button>
           </div>
         ))}
-      </div>
-    </div>
+    </>
   );
 };
