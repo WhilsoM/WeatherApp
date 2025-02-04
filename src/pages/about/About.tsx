@@ -2,6 +2,7 @@ import s from './ui/about.module.scss'
 import artgod from '/artgod.jpg'
 import dream from '/dream.jpg'
 import dream2 from '/dream2.jpg'
+import dream4 from '/dream4.jpg'
 import me from '/me.jpg'
 import tami from '/tamimasabas.jpg'
 import shit from '/122233285.jpg'
@@ -32,7 +33,7 @@ export const About = () => {
             <p>дс: tamimasabas</p>
             <p>email: zenbog2008@gmail.com</p>
           </div>
-          <img className={s.main_info_img} src={dream2} alt="Богдан" />
+          <img className={s.main_info_img} src={dream4} alt="Богдан" />
         </div>
       </div>
     </section>
