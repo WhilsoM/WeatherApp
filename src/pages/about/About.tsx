@@ -24,7 +24,7 @@ export const About = () => {
         <div className={s.main_info_third}>
           <div className={s.main_info_text_block}>
             <h2 className={s.main_info_title}>Богдан Зенков</h2>
-            <p className={s.main_info_text_block}>Глава страницы мемов и о нас. Продаст сайт за то, что бы поиграть в дбд или геншин. Так же он известен как @Tamimasabas, @Полюционер, @ Пережил лоботомию, @ХОЧУ БЫТЬ СЧАСТЛИВЫМ, @Богдан паунс в окно, @Нагнись я прыгну, @Ivan Solo</p>
+            <p className={s.main_info_text_block}>Глава страницы мемов и о нас. Продаст сайт за то, что бы поиграть в дбд или геншин. Так же он известен как @Tamimasabas, @Полюционер, @Пережил лоботомию, @ХОЧУ БЫТЬ СЧАСТЛИВЫМ, @Богдан паунс в окно, @Нагнись я прыгну, @Ivan Solo</p>
             <p>тг: @Tami2008rus</p>
             <p>дс: tamimasabas</p>
             <p>email: zenbog2008@gmail.com</p>
