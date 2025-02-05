@@ -9,9 +9,9 @@ export const Memes = () => {
         <div className={s.block_main}>
           <div className={s.block_second}>
             <div>
-              <p className={s.block}>
+              <div className={s.block}>
                 <Ad />
-              </p>
+              </div>
             </div>
             <div>
               <AddMemeCard />
