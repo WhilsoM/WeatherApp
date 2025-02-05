@@ -1,41 +1,40 @@
-import s from './ui/about.module.scss'
-import artgod from '/artgod.jpg'
-import dream from '/dream.jpg'
-import dream2 from '/dream2.jpg'
-import dream4 from '/dream4.jpg'
-import me from '/me.jpg'
-import tami from '/tamimasabas.jpg'
-import shit from '/122233285.jpg'
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import s from './ui/about.module.scss';
+import artgod from '/artgod.jpg';
+import dream4 from '/dream4.jpg';
 
 export const About = () => {
+  const { t } = useTranslation();
+
   return (
     <section className={s.main}>
       <div className={s.main_info}>
         <div className={s.main_info_first}>
-          <h1 className={s.main_info_title}>Команда воркеров</h1>
-          <p className={s.main_info_text}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda aspernatur eveniet aut corrupti. Ut, officiis? Accusantium velit sunt exercitationem omnis facilis! Magnam cumque atque harum? Qui ratione perferendis et sunt?</p>
+          <h1 className={s.main_info_title}>{t('about.team')}</h1>
+          <p className={s.main_info_text}>{t('about.description')}</p>
         </div>
         <div className={s.main_info_second}>
           <img className={s.main_info_img} src={artgod} alt="Артур" />
           <div className={s.main_info_text_block}>
-            <h2 className={s.main_info_title}>Артур Ахметов</h2>
-            <p className={s.main_info_text_block}>Главный разраб, senior, team lead, РП, декан, ГД сайта. Под его руководством стоит главная страница с погодой и слежка за поганным стажёром</p>
-            <p>тг: @moonwqwizlio</p>
-            <p>дс: mooonw_12299</p>
-            <p>email: artgod@gmail.com</p>
+            <h2 className={s.main_info_title}>{t('about.artur.name')}</h2>
+            <p className={s.main_info_text_block}>{t('about.artur.role')}</p>
+            <p>{t('about.artur.tg')}</p>
+            <p>{t('about.artur.ds')}</p>
+            <p>{t('about.artur.email')}</p>
           </div>
         </div>
         <div className={s.main_info_third}>
           <div className={s.main_info_text_block}>
-            <h2 className={s.main_info_title}>Богдан Зенков</h2>
-            <p className={s.main_info_text_block}>Глава страницы мемов и о нас. Продаст сайт за то, что бы поиграть в дбд или геншин. Так же он известен как @Tamimasabas, @Полюционер, @Пережил лоботомию, @ХОЧУ БЫТЬ СЧАСТЛИВЫМ, @Богдан паунс в окно, @Нагнись я прыгну, @Ivan Solo</p>
-            <p>тг: @Tami2008rus</p>
-            <p>дс: tamimasabas</p>
-            <p>email: zenbog2008@gmail.com</p>
+            <h2 className={s.main_info_title}>{t('about.bogdan.name')}</h2>
+            <p className={s.main_info_text_block}>{t('about.bogdan.role')}</p>
+            <p>{t('about.bogdan.tg')}</p>
+            <p>{t('about.bogdan.ds')}</p>
+            <p>{t('about.bogdan.email')}</p>
           </div>
           <img className={s.main_info_img} src={dream4} alt="Богдан" />
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

@@ -1,0 +1,33 @@
+{
+  "about": {
+    "team": "Команда воркеров",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda aspernatur eveniet aut corrupti. Ut, officiis? Accusantium velit sunt exercitationem omnis facilis! Magnam cumque atque harum? Qui ratione perferendis et sunt.",
+    "artur": {
+      "name": "Артур Ахметов",
+      "role": "Главный разраб, senior, team lead, РП, декан, ГД сайта. Под его руководством стоит главная страница с погодой и слежка за поганным стажёром",
+      "tg": "тг: @moonwqwizlio",
+      "ds": "дс: mooonw_12299",
+      "email": "email: artgod@gmail.com"
+    },
+    "bogdan": {
+      "name": "Богдан Зенков",
+      "role": "Глава страницы мемов и о нас. Продаст сайт за то, что бы поиграть в дбд или геншин. Так же он известен как @Tamimasabas, @Полюционер, @Пережил лоботомию, @ХОЧУ БЫТЬ СЧАСТЛИВЫМ, @Богдан паунс в окно, @Нагнись я прыгну, @Ivan Solo, @Пт на силу ю детей",
+      "tg": "тг: @Tami2008rus",
+      "ds": "дс: tamimasabas",
+      "email": "email: zenbog2008@gmail.com"
+    }
+  },
+  "header": {
+    "logo": "логотип",
+    "username": "artbog",
+    "email": "artgod@gmail.com"
+  },
+  "footer": {
+    "logo": "логотип"
+  },
+  "nav": {
+    "home": "Главная",
+    "about": "О нас",
+    "memes": "Мемы"
+  }
+}

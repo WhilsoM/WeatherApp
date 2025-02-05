@@ -4,17 +4,18 @@ import { Layout } from './Layout'
 import {About} from '@/pages/about/About'
 import { Memes } from '@/pages/memes/Memes'
 
+
 const App = () => {
 	return (
-		<>
+    <>
 			<Routes>
 				<Route path='/' element={<Layout />}>
 					<Route index element={<Home />} />
 					<Route path='about-us' element={<About />} />
-					<Route path='mems' element={<Memes />} />
+					<Route path='memes' element={<Memes />} />
 				</Route>
 			</Routes>
-		</>
+    </>
 	)
 }
 

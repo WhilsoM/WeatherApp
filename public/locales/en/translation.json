@@ -1,0 +1,33 @@
+{
+  "about": {
+    "team": "Team of Workers",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda aspernatur eveniet aut corrupti. Ut, officiis? Accusantium velit sunt exercitationem omnis facilis! Magnam cumque atque harum? Qui ratione perferendis et sunt.",
+    "artur": {
+      "name": "Artur Akhmetov",
+      "role": "Lead developer, senior, team lead, project manager, dean, site head. Under his leadership is the main page with weather and monitoring the bad intern.",
+      "tg": "tg: @moonwqwizlio",
+      "ds": "ds: mooonw_12299",
+      "email": "email: artgod@gmail.com"
+    },
+    "bogdan": {
+      "name": "Bogdan Zenkov",
+      "role": "Head of the memes page and about us. Will sell the site to play DBD or Genshin. He is also known as @Tamimasabas, @Полюционер, @Пережил лоботомию, @ХОЧУ БЫТЬ СЧАСТЛИВЫМ, @Богдан паунс в окно, @Нагнись я прыгну, @Ivan Solo, @Пт на силу ю детей.",
+      "tg": "tg: @Tami2008rus",
+      "ds": "ds: tamimasabas",
+      "email": "email: zenbog2008@gmail.com"
+    }
+  },
+  "header": {
+    "logo": "logo",
+    "username": "artbog",
+    "email": "artgod@gmail.com"
+  },
+  "footer": {
+    "logo": "logo"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "memes": "Memes"
+  }
+}

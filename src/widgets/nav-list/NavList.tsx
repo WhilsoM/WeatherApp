@@ -1,26 +1,30 @@
-import { NavLink } from 'react-router'
-import s from './ui/nav-list.module.scss'
+import React from 'react';
+import { NavLink } from 'react-router'; // Убедитесь, что вы используете правильный импорт
+import { useTranslation } from 'react-i18next';
+import s from './ui/nav-list.module.scss';
 
 export const NavList = () => {
-	return (
-		<nav>
-			<ul className={s.nav_list}>
-				<li>
-					<NavLink to={'/'} className={s.nav_list__link}>
-						Home
-					</NavLink>
-				</li>
-				<li>
-					<NavLink to={'about-us'} className={s.nav_list__link}>
-						About us
-					</NavLink>
-				</li>
-				<li>
-					<NavLink to={'mems'} className={s.nav_list__link}>
-						Mems
-					</NavLink>
-				</li>
-			</ul>
-		</nav>
-	)
-}
+  const { t } = useTranslation();
+
+  return (
+    <nav>
+      <ul className={s.nav_list}>
+        <li>
+          <NavLink to={'/'} className={s.nav_list__link}>
+            {t('nav.home')}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={'about-us'} className={s.nav_list__link}>
+            {t('nav.about')}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={'memes'} className={s.nav_list__link}>
+            {t('nav.memes')}
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+};
