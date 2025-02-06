@@ -1,8 +1,5 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import s from './ui/languageswitcher.module.scss'
-import strong from '/USSR.png'
-import shit from '/shit.png'
+import { useTranslation } from "react-i18next";
+import s from "./ui/languageswitcher.module.scss";
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
@@ -12,10 +9,17 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className={s.switcher_block}>
-      <button className={s.switcher} onClick={() => changeLanguage('ru')}><img className={s.img} src={strong} alt="USSR" /></button>
-      <button className={s.switcher} onClick={() => changeLanguage('en')}><img className={s.img} src={shit} alt="pindosia" /></button>
-    </div>
+    <select
+      onChange={(e) => changeLanguage(e.target.value)}
+      className={s.switcher_block}
+    >
+      <option value={"ru"} className={s.switcher}>
+        russian
+      </option>
+      <option value={"en"} className={s.switcher}>
+        english
+      </option>
+    </select>
   );
 };
 
