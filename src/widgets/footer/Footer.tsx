@@ -1,16 +1,13 @@
-import { NavList } from '../nav-list/NavList'
-import s from './ui/footer.module.scss'
+import s from "./ui/footer.module.scss";
 
 export const Footer = () => {
-	return (
-		<footer className={s.footer}>
-			<div className={`container ${s.wrapper}`}>
-				<div className={s.logo}>
-					<p>logo</p>
-				</div>
-
-				<NavList />
-			</div>
-		</footer>
-	)
-}
+  return (
+    <footer className={s.footer}>
+      <div className={`container ${s.wrapper}`}>
+        <div className={s.logo}>
+          <p>logo</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
