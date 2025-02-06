@@ -13,6 +13,8 @@ import s from "./ui/home.module.scss";
 import humidityImg from "/humidity.png";
 import windyImg from "/windy.png";
 
+import { motion } from "motion/react";
+
 export const Home = observer(() => {
   const {
     haveGeo: { haveGeo },
@@ -27,7 +29,7 @@ export const Home = observer(() => {
   const [inpValue, setInpValue] = useState<string>("Moscow");
   const debouncedInput = useDebounce(inpValue, 500);
 
-  const { data, isLoading, error } = useTanstackQuery(getWeather, inpValue, [
+  const { data } = useTanstackQuery(getWeather, inpValue, [
     "weather",
     debouncedInput,
     latitude,
@@ -42,7 +44,7 @@ export const Home = observer(() => {
     if (haveGeo) setInpValue("");
   }, [haveGeo]);
 
-  // Проверяем, что data существует, прежде чем деструктурировать
+  //  check have value data for destruction
   useEffect(() => {
     if (data?.current.is_day !== undefined) {
       console.log(data?.current.is_day);
@@ -55,20 +57,13 @@ export const Home = observer(() => {
     }
   }, [data?.current.is_day]);
 
-  if (isLoading) {
-    return <div>Загрузка...</div>;
-  }
-
-  if (error) {
-    return <div>Ошибка: {error.message}</div>;
-  }
-
-  if (!data) {
-    return <div>Данные не найдены</div>;
-  }
-
-  const current = data?.current || {};
-  const location = data?.location || {};
+  const current = data?.current || {
+    temp_c: 0,
+    humidity: 0,
+    condition: { icon: "", text: "" },
+    wind_mph: 0,
+  };
+  const location = data?.location || { name: "" };
 
   return (
     <section className={`${s.home_page} container`}>
@@ -88,7 +83,12 @@ export const Home = observer(() => {
             <p className={s.temperature}>{current?.temp_c}&deg;C</p>
           </section>
 
-          <section className={s.cards}>
+          <motion.section
+            transition={{ delay: 0.9 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className={s.cards}
+          >
             <article className={s.card}>
               <img src={humidityImg} alt="humidity" />
 
@@ -107,7 +107,7 @@ export const Home = observer(() => {
               <img src={windyImg} alt="speed windy" />
               <p>{current?.wind_mph}mph</p>
             </article>
-          </section>
+          </motion.section>
         </section>
       </section>
     </section>
