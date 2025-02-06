@@ -6,7 +6,7 @@ import { Suspense } from 'react'
 import './styles/main.scss'
 import './i18n'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(
 	// <StrictMode>
