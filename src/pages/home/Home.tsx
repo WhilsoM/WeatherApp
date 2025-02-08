@@ -47,8 +47,6 @@ export const Home = observer(() => {
   //  check have value data for destruction
   useEffect(() => {
     if (data?.current.is_day !== undefined) {
-      console.log(data?.current.is_day);
-
       if (!data?.current.is_day) {
         document.body.classList.add("theme");
       } else {
@@ -99,6 +97,7 @@ export const Home = observer(() => {
               <img
                 src={current?.condition?.icon}
                 alt={current?.condition?.text}
+                loading="lazy"
               />
               <p>погода</p>
             </article>

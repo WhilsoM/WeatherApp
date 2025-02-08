@@ -1,11 +1,7 @@
+import { IUseGeolocation } from "@/app/types/types";
 import { haveGeoStore } from "@/store/haveGeo";
 import { latitudeStore } from "@/store/latitude";
 import { longitudeStore } from "@/store/longitude";
-
-interface IUseGeolocation {
-  latitude: number;
-  longitude: number;
-}
 
 export const geolocation = () => {
   const {

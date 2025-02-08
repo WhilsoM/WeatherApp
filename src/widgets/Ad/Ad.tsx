@@ -1,3 +1,4 @@
+import { AdData } from "@/app/types/types";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -6,17 +7,9 @@ import s from "./ui/ad.module.scss";
 
 const API_URL = "https://67968bd6bedc5d43a6c58fc6.mockapi.io/ad";
 
-interface AdData {
-  id: string;
-  img: string;
-  title: string;
-  text: string;
-  link: string;
-}
-
 const Ad = () => {
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
-  const [isAdVisible, setIsAdVisible] = useState(true); 
+  const [isAdVisible, setIsAdVisible] = useState(true);
 
   const { data: ads = [] } = useQuery<AdData[]>({
     queryKey: ["ads"],
@@ -41,7 +34,7 @@ const Ad = () => {
   };
 
   if (ads.length === 0 || !isAdVisible) {
-    return null; 
+    return null;
   }
 
   const currentAd = ads[currentAdIndex];

@@ -15,7 +15,9 @@ export const Header = () => {
           <img className={s.logo} src={logo} alt={t("header.logo")} />
         </div>
         <NavList />
+
         <LanguageSwitcher />
+
         <div className={s.user}>
           <div className={s.info_user}>
             <p className={s.username}>{t("header.username")}</p>
