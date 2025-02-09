@@ -1,8 +1,7 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import s from './ui/about.module.scss';
 import artgod from '/artgod.jpg';
-import dream4 from '/dream4.jpg';
+import me from '/me.jpg';
 
 export const About = () => {
   const { t } = useTranslation();
@@ -32,7 +31,7 @@ export const About = () => {
             <p>{t('about.bogdan.ds')}</p>
             <p>{t('about.bogdan.email')}</p>
           </div>
-          <img className={s.main_info_img} src={dream4} alt="Богдан" />
+          <img className={s.main_info_img} src={me} alt="Богдан" />
         </div>
       </div>
     </section>

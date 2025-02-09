@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
 import App from './app/routes/App.tsx'
 import { Suspense } from 'react'
-import './styles/main.scss'
+import './app/styles/main.scss'
 import './i18n'
 
 const queryClient = new QueryClient();

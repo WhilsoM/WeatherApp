@@ -145,7 +145,7 @@ export const AddMemeCard = () => {
       </form>
 
         {memeCards.map((card, index) => (
-          <div key={index}>
+          <div className={s.card_list} key={index}>
             <MemeCard
               id={card.id}
               imageUrl={card.imageUrl}
