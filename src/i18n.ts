@@ -3,12 +3,16 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import Backend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
-i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
+i18n
+  .use(Backend)
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
     fallbackLng: "ru",
-    debug: true,
+    debug: false, // если true, то в консоль будет показываться информация i18n
     detection: {
-      order: ['queryString', 'cookie'],
-      caches: ['cookie']
+      order: ["queryString", "cookie"],
+      caches: ["cookie"],
     },
     interpolation: {
       escapeValue: false,

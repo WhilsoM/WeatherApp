@@ -48,9 +48,8 @@ export const getWeather = async (city: string) => {
     }
 
     const data: IWeather = await response.json();
-    console.log(URL);
+
     URL = `${import.meta.env.VITE_API_URL}`;
-    console.log(URL);
 
     return data;
   } catch (error) {
