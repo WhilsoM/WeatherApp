@@ -26,7 +26,7 @@ export const Home = observer(() => {
     longitude: { longitude },
   } = longitudeStore;
 
-  const [inpValue, setInpValue] = useState<string>("Moscow");
+  const [inpValue, setInpValue] = useState<string>("Москва");
   const debouncedInput = useDebounce(inpValue, 500);
 
   const { data } = useTanstackQuery(getWeather, inpValue, [

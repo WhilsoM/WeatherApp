@@ -1,7 +1,24 @@
-import { IWeather } from "@/hooks/useTanstackQuery";
+import { IWeather } from "@/app/types/types";
 import { haveGeoStore } from "@/store/haveGeo";
 import { latitudeStore } from "@/store/latitude";
 import { longitudeStore } from "@/store/longitude";
+
+const CITYS = ["london", "moscow", "sldakjfas;dlkfj"];
+
+/**
+ * №1
+ * если в поиске есть тот же город что и в доп инфе
+ * то менять город на другой
+ *
+ *
+ * № 2
+ * берем из массива город, вычисляем его индекс, мы делаем запрос
+ *
+ * юзер ввел текст в инпут - идет проверка есть ли этот город в столбце с новой инфой
+ * набер - набережные
+ * CITYS.includes('набер')
+ * toLowerCase()
+ */
 
 export const getWeather = async (city: string) => {
   const {
@@ -18,7 +35,7 @@ export const getWeather = async (city: string) => {
   let URL = `${import.meta.env.VITE_API_URL}`;
 
   try {
-    if (haveGeo) {
+    if (haveGeo && city.length === 0) {
       URL += `&q=${latitude},${longitude}`;
     } else {
       URL += `&q=${city}`;
@@ -31,6 +48,10 @@ export const getWeather = async (city: string) => {
     }
 
     const data: IWeather = await response.json();
+    console.log(URL);
+    URL = `${import.meta.env.VITE_API_URL}`;
+    console.log(URL);
+
     return data;
   } catch (error) {
     console.error("ERROR", error);
