@@ -1,7 +1,8 @@
+import { MemeCardProps } from "@/app/types/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
-import MemeCard, { MemeCardProps } from "../MemeCard/MemeCard";
+import MemeCard from "../MemeCard/MemeCard";
 import s from "./ui/addmemecard.module.scss";
 
 const API_URL = "https://67968bd6bedc5d43a6c58fc6.mockapi.io/memes";
@@ -37,8 +38,8 @@ export const AddMemeCard = () => {
     onError: () => {
       console.error("Ты опоздал юзер, я съел твой мем!");
     },
-  }); 
- 
+  });
+
   const deleteMemeMutation = useMutation({
     mutationFn: (id: string) => axios.delete(`${API_URL}/${id}`),
     onSuccess: () => {
@@ -144,21 +145,21 @@ export const AddMemeCard = () => {
         )}
       </form>
 
-        {memeCards.map((card, index) => (
-          <div key={index}>
-            <MemeCard
-              id={card.id}
-              imageUrl={card.imageUrl}
-              userName={card.userName}
-              createdAt={card.createdAt}
-              title={card.title}
-            />
-            <div className={s.button_block}>
-              <button onClick={() => handleEdit(card)}>Edit</button>
-              <button onClick={() => handleDelete(card.id)}>Delete</button>
-            </div>
+      {memeCards.map((card, index) => (
+        <div key={index}>
+          <MemeCard
+            id={card.id}
+            imageUrl={card.imageUrl}
+            userName={card.userName}
+            createdAt={card.createdAt}
+            title={card.title}
+          />
+          <div className={s.button_block}>
+            <button onClick={() => handleEdit(card)}>Edit</button>
+            <button onClick={() => handleDelete(card.id)}>Delete</button>
           </div>
-        ))}
+        </div>
+      ))}
     </>
   );
 };

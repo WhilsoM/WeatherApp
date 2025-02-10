@@ -2,9 +2,6 @@ import { IWeather } from "@/app/types/types";
 import { haveGeoStore } from "@/store/haveGeo";
 import { latitudeStore } from "@/store/latitude";
 import { longitudeStore } from "@/store/longitude";
-
-const CITYS = ["london", "moscow", "sldakjfas;dlkfj"];
-
 /**
  * №1
  * если в поиске есть тот же город что и в доп инфе

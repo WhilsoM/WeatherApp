@@ -15,7 +15,7 @@ export const LoginForm: React.FC = observer(() => {
         password,
       });
       localStorage.setItem("token", response.data.token);
-      navigate("/profile");
+      navigate("/");
     } catch (error) {
       console.error("Login failed", error);
     }

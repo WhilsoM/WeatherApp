@@ -1,18 +1,22 @@
+import { authStore } from "@/store/authStore";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
-const Profile = () => {
+export const Profile = () => {
   const [userData, setUserData] = useState<{
     user: {
       username: string;
       email: string;
     };
   } | null>(null);
+  const [err, setErr] = useState(false);
+  const navigate = useNavigate();
 
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem("token");
+
       if (!token) {
         console.error("No token found");
         return;
@@ -26,8 +30,16 @@ const Profile = () => {
 
       setUserData(response.data);
     } catch (error) {
+      setErr(true);
       console.error("Failed to fetch profile", error);
     }
+  };
+
+  const logoutHandler = () => {
+    authStore.logout();
+    console.log(localStorage.getItem("token"));
+
+    navigate("/register");
   };
 
   useEffect(() => {
@@ -35,17 +47,43 @@ const Profile = () => {
   }, []);
 
   if (!userData) {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <div>
+          <Link to={"/"}>Home</Link>
+          <p>Loading...</p>
+        </div>
+      </>
+    );
   }
+
+  setTimeout(() => {
+    if (!userData) {
+      return (
+        <div>
+          Произошла ошибка, пожалуйста попробуйте авторизоваться снова позднее
+        </div>
+      );
+    }
+  }, 3000);
 
   return (
     <div>
-      <Link to={"/"}>Home</Link>
-      <h1>Profile</h1>
-      <p>Username: {userData.user.username}</p>
-      <p>Email: {userData.user.email}</p>
+      {err ? (
+        <div>
+          <p>Вы не зарегестрировались</p>
+          <Link to={"/register"}>регистрация</Link>
+        </div>
+      ) : (
+        <>
+          <Link to={"/"}>Home</Link>
+
+          <h1>Profile</h1>
+          <p>Username: {userData.user.username}</p>
+          <p>Email: {userData.user.email}</p>
+          <button onClick={logoutHandler}>Выйти из аккаунта</button>
+        </>
+      )}
     </div>
   );
 };
-
-export default Profile;

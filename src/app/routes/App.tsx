@@ -4,7 +4,7 @@ import { Login } from "@/pages/login/Login";
 import { Memes } from "@/pages/memes/Memes";
 import { NotFoundPage } from "@/pages/not-found-page/NotFoundPage";
 import { Registration } from "@/pages/registration/Registration";
-import Profile from "@/widgets/profile/Profile";
+import { Profile } from "@/widgets/profile/Profile";
 import ProtectedRoute from "@/widgets/protected-route/ProtectedRoute";
 import { Route, Routes } from "react-router";
 import { Layout } from "./Layout";
