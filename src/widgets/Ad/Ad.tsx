@@ -47,9 +47,9 @@ const Ad = () => {
         <p className={s.adText}>{currentAd.text}</p>
         <Link to={currentAd.link}>Подробнее</Link>
       </div>
-      <button onClick={handleCloseAd} className={s.closeButton}>
+      <p onClick={handleCloseAd} className={s.closeButton}>
         &#10006;
-      </button>
+      </p>
     </div>
   );
 };
