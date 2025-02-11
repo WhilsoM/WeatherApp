@@ -2,9 +2,6 @@ import { IWeather } from "@/app/types/types";
 import { haveGeoStore } from "@/store/haveGeo";
 import { latitudeStore } from "@/store/latitude";
 import { longitudeStore } from "@/store/longitude";
-
-const CITYS = ["london", "moscow", "sldakjfas;dlkfj"];
-
 /**
  * №1
  * если в поиске есть тот же город что и в доп инфе
@@ -48,9 +45,8 @@ export const getWeather = async (city: string) => {
     }
 
     const data: IWeather = await response.json();
-    console.log(URL);
+
     URL = `${import.meta.env.VITE_API_URL}`;
-    console.log(URL);
 
     return data;
   } catch (error) {

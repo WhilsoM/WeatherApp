@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router";
 import LanguageSwitcher from "../languageswitcher/LanguageSwitcher";
 import { NavList } from "../nav-list/NavList";
 import s from "./ui/header.module.scss";
@@ -19,11 +20,7 @@ export const Header = () => {
         <LanguageSwitcher />
 
         <div className={s.user}>
-          <div className={s.info_user}>
-            <p className={s.username}>{t("header.username")}</p>
-            <p className={s.email}>{t("header.email")}</p>
-          </div>
-          <div className="avatar">avatar</div>
+          <Link to={"/profile"}>Профиль</Link>
         </div>
       </div>
     </motion.header>
