@@ -19,9 +19,38 @@
   height: 100%;
 }
 .block {
-  position: absolute;
-  top: 95px;
-  left: 55%;
-  max-width: fit-content;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ad {
+  text-align-last: left;
+}
+
+.main_info__wrapper {
+  margin-bottom: 35px;
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  font-size: 96px;
+  background: linear-gradient(90deg, #ffffff, #e933ff, #ffffff);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textflow 5s linear infinite;
+
+  @keyframes textflow {
+    from {
+      background-position: 0% center;
+    }
+    to {
+      background-position: 200% center;
+    }
+  }
 }

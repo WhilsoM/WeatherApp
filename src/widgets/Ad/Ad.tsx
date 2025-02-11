@@ -7,7 +7,7 @@ import s from "./ui/ad.module.scss";
 
 const API_URL = "https://67968bd6bedc5d43a6c58fc6.mockapi.io/ad";
 
-const Ad = () => {
+export const Ad = () => {
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [isAdVisible, setIsAdVisible] = useState(true);
 
@@ -53,5 +53,3 @@ const Ad = () => {
     </div>
   );
 };
-
-export default Ad;

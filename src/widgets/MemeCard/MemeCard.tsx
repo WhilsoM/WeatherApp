@@ -2,7 +2,7 @@ import { MemeCardProps } from "@/app/types/types";
 import React from "react";
 import s from "./ui/memecard.module.scss";
 
-const MemeCard: React.FC<MemeCardProps> = ({
+export const MemeCard: React.FC<MemeCardProps> = ({
   imageUrl,
   userName,
   createdAt,
@@ -22,4 +22,4 @@ const MemeCard: React.FC<MemeCardProps> = ({
   );
 };
 
-export default MemeCard;
+// export default MemeCard; // не используй дефолтный импорт

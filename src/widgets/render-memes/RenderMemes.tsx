@@ -1,6 +1,6 @@
 import { IRenderMemes } from "@/app/types/types";
 import { FC } from "react";
-import MemeCard from "../MemeCard/MemeCard";
+import { MemeCard } from "../MemeCard/MemeCard";
 import s from "./ui/rendermemes.module.scss";
 
 export const RenderMemes: FC<IRenderMemes> = ({
@@ -11,7 +11,7 @@ export const RenderMemes: FC<IRenderMemes> = ({
   return (
     <>
       {memeCards.map((card: any, index: number) => (
-        <div key={index}>
+        <article className={s.memeCard} key={index}>
           <MemeCard
             id={card.id}
             imageUrl={card.imageUrl}
@@ -23,7 +23,7 @@ export const RenderMemes: FC<IRenderMemes> = ({
             <button onClick={() => handleEdit(card)}>Edit</button>
             <button onClick={() => handleDelete(card.id)}>Delete</button>
           </div>
-        </div>
+        </article>
       ))}
     </>
   );
