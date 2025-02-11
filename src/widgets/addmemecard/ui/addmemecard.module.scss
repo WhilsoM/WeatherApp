@@ -1,3 +1,5 @@
+@use "@/app/styles/mixins" as *;
+
 // .qwe {
 //   display: flex;
 //   flex-direction: column;
@@ -6,8 +8,8 @@
 // }
 
 form {
-  display: flex;
-  flex-direction: column;
+  @include flex("t");
+
   align-items: flex-start;
   gap: 10px;
 }
@@ -45,9 +47,7 @@ input {
   margin-bottom: 50px;
 }
 .loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex("");
   height: 100vh;
   width: 100%;
   font-size: 96px;
@@ -79,15 +79,13 @@ input {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex("");
+
     z-index: 1000;
-    
   }
-  &_header{
+  &_header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
@@ -147,4 +145,3 @@ input {
     transform: translateY(0);
   }
 }
-

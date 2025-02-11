@@ -13,7 +13,7 @@ const LanguageSwitcher = () => {
       onChange={(e) => changeLanguage(e.target.value)}
       className={s.switcher_block}
     >
-      <option disabled value={""} className={s.switcher}>
+      <option disabled className={s.switcher}>
         Выбор языка
       </option>
       <option value={"ru"} className={s.switcher}>
@@ -24,6 +24,12 @@ const LanguageSwitcher = () => {
       </option>
       <option value={"ja"} className={s.switcher}>
         японский
+      </option>
+      <option value={"kz"} className={s.switcher}>
+        казахский
+      </option>
+      <option value={"sp"} className={s.switcher}>
+        испанский
       </option>
     </select>
   );

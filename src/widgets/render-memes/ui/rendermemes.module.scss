@@ -1,0 +1,17 @@
+@use "@/app/styles/variables.scss" as *;
+
+.memeCard {
+  margin-bottom: 35px;
+}
+
+.button_block {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+
+  button {
+    padding: 10px 15px;
+    background-color: rgba($bg-main, $alpha: 1);
+  }
+}

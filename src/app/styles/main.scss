@@ -1,5 +1,6 @@
 @use "scss-reset";
 @use "./variables" as *;
+@use "./mixins" as *;
 
 html,
 body {
@@ -8,8 +9,7 @@ body {
   background-color: $bg-main;
 }
 #root {
-  display: flex;
-  flex-direction: column;
+  @include flex("t");
   height: 100%;
 }
 

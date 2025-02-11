@@ -1,0 +1,12 @@
+@mixin flex($direction) {
+  display: flex;
+
+  @if $direction == "t" {
+    flex-direction: column;
+  } @else if $direction == "f" {
+    flex-direction: row;
+  } @else {
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,4 +1,5 @@
 @use "@/app/styles/variables" as *;
+@use "@/app/styles/mixins" as *;
 
 .header {
   margin-top: 10px;
@@ -9,11 +10,11 @@
   border: 2px solid $black;
   border-radius: 30px;
   padding: 15px;
-  display: flex;
+  @include flex("");
+
   justify-content: space-between;
-  align-items: center;
 }
-.logo{
+.logo {
   height: 60px;
 }
 
@@ -22,8 +23,8 @@
   gap: 20px;
 }
 .info_user {
-  display: flex;
-  flex-direction: column;
+  @include flex("t");
+
   align-items: flex-end;
 }
 // .username,

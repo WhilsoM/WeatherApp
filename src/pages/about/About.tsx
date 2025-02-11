@@ -11,7 +11,6 @@ export const About = () => {
       <div className={s.main_info}>
         <div className={s.main_info_first}>
           <h1 className={s.main_info_title}>{t("about.team")}</h1>
-          <p className={s.main_info_text}>{t("about.description")}</p>
         </div>
         <div className={s.main_info_second}>
           <img className={s.main_info_img} src={artgod} alt="Артур" />

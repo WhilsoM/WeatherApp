@@ -7,7 +7,7 @@ import s from "./ui/ad.module.scss";
 
 const API_URL = "https://67968bd6bedc5d43a6c58fc6.mockapi.io/ad";
 
-const Ad = () => {
+export const Ad = () => {
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [isAdVisible, setIsAdVisible] = useState(true);
 
@@ -42,7 +42,7 @@ const Ad = () => {
   return (
     <div key={currentAd.id} className={s.ad_card}>
       <img src={currentAd.img} className={s.ad_img} alt={currentAd.title} />
-      <div>
+      <div className={s.ad_wrapper}>
         <h2 className={s.adTitle}>{currentAd.title}</h2>
         <p className={s.adText}>{currentAd.text}</p>
         <Link to={currentAd.link}>Подробнее</Link>
@@ -53,5 +53,3 @@ const Ad = () => {
     </div>
   );
 };
-
-export default Ad;

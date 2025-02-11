@@ -42,3 +42,26 @@ export interface ISearch {
   inpValue: string;
   setInpValue: (e: string) => void;
 }
+
+export interface IModal {
+  children?: React.ReactNode;
+  handleClick?: () => void;
+}
+
+export interface IRenderMemes {
+  memeCards: any[];
+  handleEdit: (arg: any) => void;
+  handleDelete: (arg: any) => void;
+}
+export interface IAddMemeForm {
+  handleSubmit: (e: React.FormEvent) => void;
+  imageUrl: string;
+  setImageUrl: (e: any) => void;
+  userName: string;
+  setUserName: (e: any) => void;
+  title: string;
+  setTitle: (e: any) => void;
+  editingCard: any;
+  setEditingCard: any;
+  handleClick: () => void;
+}

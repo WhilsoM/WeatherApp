@@ -1,0 +1,34 @@
+{
+  "about": {
+    "team": "Equipo de trabajadores",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda aspernatur eveniet aut corrupti. Ut, officiis? Accusantium velit sunt exercitationem omnis facilis! Magnam cumque atque harum? Qui ratione perferendis et sunt.",
+    "artur": {
+      "name": "Artur Ajmétov",
+      "role": "Desarrollador principal, senior, team lead, RP, decano, director del sitio. Bajo su dirección está la página principal con el clima y la supervisión del malvado becario.",
+      "tg": "tg: @moonwqwizlio",
+      "ds": "ds: mooonw_12299",
+      "email": "email: artgod@gmail.com"
+    },
+    "bogdan": {
+      "name": "Bogdan Zenkov",
+      "role": "Responsable de la página de memes y sobre nosotros. Vendería el sitio con tal de jugar a DBD o Genshin. También es conocido como @Tamimasabas, @Polucionero, @Sobrevivió a la lobotomía, @QUIERO SER FELIZ, @Bogdan salta por la ventana, @Agáchate, voy a saltar, @Ivan Solo, @Viernes de fuerza infantil",
+      "tg": "tg: @Tami2008rus",
+      "ds": "ds: tamimasabas",
+      "email": "email: zenbog2008@gmail.com"
+    }
+  },
+  "header": {
+    "logo": "logotipo",
+    "username": "artbog",
+    "email": "artgod@gmail.com"
+  },
+  "footer": {
+    "logo": "logotipo"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre nosotros",
+    "memes": "Memes"
+  },
+  "search": "Buscar..."
+}
