@@ -1,10 +1,6 @@
 @use "@/app/styles/variables" as *;
 @use "@/app/styles/mixins" as *;
 
-.about_us {
-  display: flex;
-  height: 75vh;
-}
 .block {
   @include flex("");
   justify-content: space-between;
