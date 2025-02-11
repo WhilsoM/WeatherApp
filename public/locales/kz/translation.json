@@ -1,0 +1,34 @@
+{
+  "about": {
+    "team": "Жұмысшылар тобы",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda aspernatur eveniet aut corrupti. Ut, officiis? Accusantium velit sunt exercitationem omnis facilis! Magnam cumque atque harum? Qui ratione perferendis et sunt.",
+    "artur": {
+      "name": "Артур Ахметов",
+      "role": "Бас әзірлеуші, senior, team lead, RP, декан, сайттың директоры. Оның басшылығымен ауа райы туралы басты бет және жаман стажерді бақылау жасалады.",
+      "tg": "тг: @moonwqwizlio",
+      "ds": "дс: mooonw_12299",
+      "email": "email: artgod@gmail.com"
+    },
+    "bogdan": {
+      "name": "Богдан Зенков",
+      "role": "Мемдер бен біз туралы беттің басшысы. Сайтты DBD немесе Genshin ойнау үшін сатады. Сонымен қатар ол @Tamimasabas, @Полюционер, @Лоботомиядан аман қалды, @БАҚЫТТЫ БОЛҒЫМ КЕЛЕДІ, @Богдан терезеден секірді, @Иілт, мен секіремін, @Ivan Solo, @Балалар күшінің жұмасы ретінде танымал.",
+      "tg": "тг: @Tami2008rus",
+      "ds": "дс: tamimasabas",
+      "email": "email: zenbog2008@gmail.com"
+    }
+  },
+  "header": {
+    "logo": "логотип",
+    "username": "artbog",
+    "email": "artgod@gmail.com"
+  },
+  "footer": {
+    "logo": "логотип"
+  },
+  "nav": {
+    "home": "Басты",
+    "about": "Біз туралы",
+    "memes": "Мемдер"
+  },
+  "search": "Іздеу..."
+}
