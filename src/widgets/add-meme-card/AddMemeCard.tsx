@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useState, useRef } from "react";
 import s from "./ui/addmemecard.module.scss";
 import { MemeCardProps } from "@/app/types/types";
-import MemeCard from "../MemeCard/MemeCard";
+import MemeCard from "../meme-card/MemeCard";
 
 const API_URL = "https://67968bd6bedc5d43a6c58fc6.mockapi.io/memes";
 
@@ -32,7 +32,7 @@ const handleTouchEnd = (e: React.TouchEvent) => {
       modalContent.classList.add('closing');
       setTimeout(() => {
         closeModal();
-      }, 300); // Время анимации
+      }, 300); 
     }
   }
 };

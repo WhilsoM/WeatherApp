@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "../languageswitcher/LanguageSwitcher";
+import LanguageSwitcher from "../language-switcher/LanguageSwitcher";
 import { NavList } from "../nav-list/NavList";
 import s from "./ui/header.module.scss";
 import logo from "/logo.png";

@@ -1,5 +1,5 @@
-import Ad from "@/widgets/Ad/Ad";
-import { AddMemeCard } from "@/widgets/addmemecard/AddMemeCard";
+import Ad from "@/widgets/ad/Ad";
+import { AddMemeCard } from "@/widgets/add-meme-card/AddMemeCard";
 import s from "./ui/memes.module.scss";
 
 export const Memes = () => {
