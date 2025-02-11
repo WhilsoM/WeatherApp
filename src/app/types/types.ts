@@ -42,3 +42,14 @@ export interface ISearch {
   inpValue: string;
   setInpValue: (e: string) => void;
 }
+
+export interface IModal {
+  children?: React.ReactNode;
+  handleClick?: () => void;
+}
+
+export interface IRenderMemes {
+  memeCards: any[];
+  handleEdit: (arg: any) => void;
+  handleDelete: (arg: any) => void;
+}

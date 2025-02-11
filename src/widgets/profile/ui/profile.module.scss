@@ -1,0 +1,52 @@
+@use "@/app/styles/variables.scss" as *;
+
+.profile {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__wrapper {
+  padding: 15px 15px;
+  border-radius: 15px;
+  width: 50%;
+  height: 50%;
+  background-color: #eeeeeeec;
+
+  a {
+    font-size: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-decoration: none;
+    color: $link;
+
+    &:hover {
+      color: $link-hover;
+    }
+  }
+
+  h1 {
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 19px;
+    margin-bottom: 15px;
+  }
+
+  button {
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

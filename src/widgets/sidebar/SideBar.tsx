@@ -6,9 +6,11 @@ const CITYES = ["лондон", "набережные челны", "нью йо�
 export const SideBar = () => {
   return (
     <aside className={s.sidebar}>
-      {CITYES.map((item) => (
-        <RenderCityes item={item} key={item} />
-      ))}
+      <section>
+        {CITYES.map((item) => (
+          <RenderCityes item={item} key={item} />
+        ))}
+      </section>
     </aside>
   );
 };
