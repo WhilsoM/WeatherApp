@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { makeAutoObservable } from "mobx";
 
 class AuthStore {
   token: string | null = "";
   isAuthenticated = false;
-  haveError = false;
+  error = "";
 
   constructor() {
     makeAutoObservable(this);
@@ -12,19 +12,28 @@ class AuthStore {
 
   async login(username: string, password: string) {
     try {
-      const response = await axios.post("http://localhost:5000/login", {
-        username,
-        password,
-      });
+      const response: AxiosResponse = await axios.post(
+        "http://localhost:5000/login",
+        {
+          username,
+          password,
+        }
+      );
       this.token = response.data.token;
       this.isAuthenticated = true;
-      this.haveError = false;
+      this.error = "";
 
       if (this.token !== null) localStorage.setItem("token", this.token);
       else console.error("Token is null");
-    } catch (error) {
-      this.haveError = true;
-      console.error("Login failed", error);
+    } catch (error: AxiosError) {
+      if (error.response) {
+        this.error = error.response.data.message;
+        console.error("Login failed", error.response.data);
+      } else if (error.request) {
+        console.error("No response received", error.request);
+      } else {
+        console.error("Error setting up the request", error.message);
+      }
     }
   }
 
@@ -35,10 +44,16 @@ class AuthStore {
         password,
         email,
       });
-      this.haveError = false;
-    } catch (error) {
-      this.haveError = true;
-      console.error("Registration failed", error);
+      this.error = "";
+    } catch (error: AxiosError) {
+      if (error.response) {
+        this.error = error.response.data.message;
+        console.error("Login failed", error.response.data);
+      } else if (error.request) {
+        console.error("No response received", error.request);
+      } else {
+        console.error("Error setting up the request", error.message);
+      }
     }
   }
 

@@ -18,13 +18,28 @@
       display: none;
     }
   }
+
+  @media (max-width: $desktop) {
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
 }
 
 .city {
   display: flex;
   gap: 25px;
+  align-items: center;
   h4 {
     font-size: 19px;
+  }
+  @media (max-width: $tablet) {
+    gap: 15px;
+
+    h4 {
+      font-size: 17px;
+    }
   }
 }
 
@@ -33,6 +48,11 @@
   display: flex;
   align-items: center;
   gap: 15px;
+
+  @media (max-width: $tablet) {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
 }
 
 .weather_wrapper {

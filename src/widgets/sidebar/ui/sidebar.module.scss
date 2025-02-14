@@ -6,4 +6,11 @@
   background-color: $bg-section;
   border-radius: 30px;
   padding: 20px 15px;
+
+  @media (max-width: $desktop) {
+    width: 30%;
+  }
+  @media (max-width: $tablet) {
+    display: none;
+  }
 }

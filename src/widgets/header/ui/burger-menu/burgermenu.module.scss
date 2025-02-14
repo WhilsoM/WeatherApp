@@ -1,0 +1,9 @@
+@use "@/app/styles/variables" as *;
+
+.burger_menu {
+  display: none;
+
+  @media (max-width: $tablet) {
+    display: flex;
+  }
+}

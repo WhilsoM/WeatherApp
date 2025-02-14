@@ -11,14 +11,31 @@
   border-radius: 30px;
   padding: 15px;
   display: flex;
-  gap: 15px;
   align-items: center;
+  @media (max-width: $tablet) {
+    padding: 10px;
+  }
+
+  @media (min-width: $mobile) {
+    gap: 10px;
+  }
 }
+
 .logo {
   height: 60px;
+
+  @media (max-width: $tablet) {
+    height: 40px;
+  }
 }
 
 .center {
   width: 100%;
   @include flex("");
+
+  @media (min-width: $mobile) {
+    p {
+      font-size: 15px;
+    }
+  }
 }

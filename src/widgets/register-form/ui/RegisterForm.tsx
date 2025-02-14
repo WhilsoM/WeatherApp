@@ -1,43 +1,37 @@
 import { authStore } from "@/app/store";
-import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import { ILoginForm } from "../model";
-
-export const LoginForm = observer(() => {
+import { IRegisterForm } from "../model/";
+export const RegisterForm = () => {
   const [textError, setTextError] = useState("");
-
-  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILoginForm>();
+  } = useForm<IRegisterForm>();
 
-  const handleLogin = async (data: ILoginForm) => {
-    console.log(authStore.error);
+  const navigate = useNavigate();
 
-    if (authStore.error === "Invalid credentials") {
-      setTextError("неправильно введен username/email");
+  const handleRegister = async (data: IRegisterForm) => {
+    if (authStore.error === "Registration failed") {
+      setTextError("username занят/email занят");
       return;
     }
-    const { username, password } = data;
 
-    await authStore.login(username, password);
+    const { username, password, email } = data;
+    await authStore.register(username, password, email);
     return navigate("/");
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <p>{textError}</p>
-      {errors.username && <p>{errors.username.message}</p>}
-
+    <>
+      {errors.username && <p>Имя пользователя обязательно</p>}
+      {errors.email && <p>Некорректный email</p>}
       {errors.password && <p>{errors.password.message}</p>}
-
-      <form onSubmit={handleSubmit(handleLogin)}>
+      <p>{textError}</p>
+      <form onSubmit={handleSubmit(handleRegister)}>
         <input
           type="text"
           placeholder="username"
@@ -45,12 +39,18 @@ export const LoginForm = observer(() => {
             required: true,
             max: 8,
             min: 4,
-            maxLength: 12,
-            pattern: {
-              value: /^[A-Za-z0-9]+$/,
-              message:
-                "Разрешено использовать английские буквы и цифры, запрещается использовать спец. символы",
-            },
+            maxLength: 20,
+          })}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          {...register("email", {
+            required: true,
+            max: 8,
+            min: 4,
+            maxLength: 50,
+            pattern: /^\S+@\S+$/i,
           })}
         />
         <input
@@ -68,8 +68,8 @@ export const LoginForm = observer(() => {
           })}
         />
 
-        <button type="submit">Войти в аккаунт</button>
+        <button type="submit">зарегистрироваться</button>
       </form>
-    </div>
+    </>
   );
-});
+};

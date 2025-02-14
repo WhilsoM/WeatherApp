@@ -1,11 +1,17 @@
+@use "@/app/styles/variables" as *;
+
 .switcher {
   padding: 5px 10px;
   border: 2px solid #000;
-
+  display: block;
   &:focus {
     border-color: rgb(1, 1, 220);
   }
   &__option {
     background-color: #efefef;
   }
+
+  // @media (min-width: $mobile) {
+  //   display: none;
+  // }
 }

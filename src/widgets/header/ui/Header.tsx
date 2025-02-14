@@ -2,15 +2,16 @@ import { LanguageSwitcher } from "@/widgets/languageswitcher";
 import { NavList } from "@/widgets/nav-list/";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router";
+import { BurgerMenu } from "./burger-menu/BurgerMenu";
 import s from "./header.module.scss";
+import { LinkToProfile } from "./profile/LinkToProfile";
 
 export const Header = () => {
   const { t } = useTranslation();
 
   return (
     <motion.header className={s.header}>
-      <div className={`container ${s.wrapper}`}>
+      <div className={`${s.wrapper} container `}>
         <div>
           <img
             className={s.logo}
@@ -23,9 +24,9 @@ export const Header = () => {
 
         <LanguageSwitcher />
 
-        <div className={s.user}>
-          <Link to={"/profile"}>Профиль</Link>
-        </div>
+        <LinkToProfile />
+
+        <BurgerMenu />
       </div>
     </motion.header>
   );
