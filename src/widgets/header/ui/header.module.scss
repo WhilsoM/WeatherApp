@@ -27,6 +27,17 @@
 
   align-items: flex-end;
 }
-// .username,
-// .email {
-// }
+.user {
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: 5px 10px;
+
+  a {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    &:focus {
+      color: rgb(2, 48, 197);
+    }
+  }
+}

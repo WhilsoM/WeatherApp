@@ -1,10 +1,11 @@
-.switcher{
-  
-  &_block{
-    display: flex;
-    gap: 10px;
+.switcher {
+  padding: 5px 10px;
+  border: 2px solid #000;
+
+  &:focus {
+    border-color: rgb(1, 1, 220);
   }
-}
-.img{
-  height: 50px;
+  &__option {
+    background-color: #efefef;
+  }
 }
