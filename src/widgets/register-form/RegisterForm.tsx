@@ -1,5 +1,4 @@
-import { authStore } from "@/store/authStore";
-import { validationStore } from "@/store/validation-store";
+import { authStore, validationStore } from "@/app/store/";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 

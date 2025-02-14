@@ -1,5 +1,5 @@
-import { Footer } from "@/widgets/footer/Footer";
-import { Header } from "@/widgets/header/Header";
+import { Footer } from "@/widgets/footer/";
+import { Header } from "@/widgets/header/";
 import { Outlet } from "react-router";
 
 export const Layout = () => {

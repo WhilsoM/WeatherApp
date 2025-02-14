@@ -1,0 +1,42 @@
+@use "@/app/styles/variables.scss" as *;
+
+.different_city {
+  margin-bottom: 20px;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+
+  hr {
+    height: 2px;
+    background-color: $soft-dark;
+  }
+
+  &:last-of-type {
+    hr {
+      display: none;
+    }
+  }
+}
+
+.city {
+  display: flex;
+  gap: 25px;
+  h4 {
+    font-size: 19px;
+  }
+}
+
+.weather {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.weather_wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

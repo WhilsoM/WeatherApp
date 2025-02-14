@@ -1,13 +1,15 @@
-import { About } from "@/pages/about/About";
-import { Home } from "@/pages/home/Home";
-import { Login } from "@/pages/login/Login";
-import { Memes } from "@/pages/memes/Memes";
-import { NotFoundPage } from "@/pages/not-found-page/NotFoundPage";
-import { Registration } from "@/pages/registration/Registration";
-import { Profile } from "@/widgets/profile/Profile";
+import { Home } from "@/pages/home/";
+import { Login } from "@/pages/login/";
+import { NotFoundPage } from "@/pages/not-found-page/";
+import { Profile } from "@/pages/profile/";
+import { Registration } from "@/pages/registration/";
 import ProtectedRoute from "@/widgets/protected-route/ProtectedRoute";
+import { lazy } from "react";
 import { Route, Routes } from "react-router";
 import { Layout } from "./Layout";
+
+const Memes = lazy(() => import("@/pages/memes/ui/Memes"));
+const About = lazy(() => import("@/pages/about/ui/About"));
 
 const App = () => {
   return (
