@@ -1,4 +1,4 @@
-export interface IAddMemeForm {
+export type TAddMemeForm = {
   handleSubmit: (e: React.FormEvent) => void;
   imageUrl: string;
   setImageUrl: (e: any) => void;
@@ -8,4 +8,4 @@ export interface IAddMemeForm {
   setTitle: (e: any) => void;
   editingCard: any;
   setEditingCard: any;
-}
+};

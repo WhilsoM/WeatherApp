@@ -1,9 +1,9 @@
-export interface IUseGeolocation {
+export type TUseGeolocation {
   latitude: number;
   longitude: number;
 }
 
-export interface IWeather {
+export type TWeather {
   location: {
     name: string;
     lat: number;

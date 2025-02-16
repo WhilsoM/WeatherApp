@@ -36,9 +36,7 @@ export const Profile = observer(() => {
         <Link to={"/register"}>Зарегистрироваться</Link>
 
         <Link to={"/"}>Главная</Link>
-        {!!err && <div> {err} </div>}
-
-        <p>Loading...</p>
+        {err === "" ? <p>Loading...</p> : <p>{err} </p>}
       </>
     );
   }

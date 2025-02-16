@@ -1,1 +1,1 @@
-export type { IAdData } from "./types.ts";
+export type { TAdData } from "./types.ts";

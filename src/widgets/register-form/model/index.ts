@@ -1,1 +1,1 @@
-export type { IRegisterForm } from "./types.ts";
+export type { TRegisterForm } from "./types.ts";

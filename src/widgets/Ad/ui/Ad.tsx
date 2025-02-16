@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { IAdData } from "../model/";
+import { TAdData } from "../model/";
 import s from "./ad.module.scss";
 
 const API_URL = "https://67968bd6bedc5d43a6c58fc6.mockapi.io/ad";
@@ -11,7 +11,7 @@ export const Ad = () => {
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [isAdVisible, setIsAdVisible] = useState(true);
 
-  const { data: ads = [] } = useQuery<IAdData[]>({
+  const { data: ads = [] } = useQuery<TAdData[]>({
     queryKey: ["ads"],
     queryFn: async () => {
       const response = await axios.get(API_URL);

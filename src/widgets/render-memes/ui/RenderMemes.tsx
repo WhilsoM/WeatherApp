@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { MemeCard } from "../../MemeCard/MemeCard";
-import { IRenderMemes } from "../model/";
+import { TRenderMemes } from "../model/";
 import s from "./rendermemes.module.scss";
 
-export const RenderMemes: FC<IRenderMemes> = ({
+export const RenderMemes: FC<TRenderMemes> = ({
   memeCards,
   handleEdit,
   handleDelete,

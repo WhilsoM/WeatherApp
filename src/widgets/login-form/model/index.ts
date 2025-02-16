@@ -1,1 +1,1 @@
-export type { ILoginForm } from "./types.ts";
+export type { TLoginForm } from "./types.ts";

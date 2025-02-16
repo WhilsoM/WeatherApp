@@ -2,7 +2,7 @@ import { authStore } from "@/app/store";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import { IRegisterForm } from "../model/";
+import { TRegisterForm } from "../model/";
 export const RegisterForm = () => {
   const [textError, setTextError] = useState("");
 
@@ -10,11 +10,11 @@ export const RegisterForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IRegisterForm>();
+  } = useForm<TRegisterForm>();
 
   const navigate = useNavigate();
 
-  const handleRegister = async (data: IRegisterForm) => {
+  const handleRegister = async (data: TRegisterForm) => {
     if (authStore.error === "Registration failed") {
       setTextError("username занят/email занят");
       return;

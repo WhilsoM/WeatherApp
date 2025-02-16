@@ -1,9 +1,9 @@
 import { ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
-import { ISearch } from "../model/types";
+import { TSearch } from "../model/";
 import s from "./search.module.scss";
 
-export const Search = ({ inpValue, setInpValue }: ISearch) => {
+export const Search = ({ inpValue, setInpValue }: TSearch) => {
   const { t } = useTranslation();
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setInpValue(e.target.value);

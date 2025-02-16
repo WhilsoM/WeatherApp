@@ -1,3 +1,3 @@
-export interface ISideBar {
+export type TSideBar = {
   children: React.ReactNode;
-}
+};

@@ -1,1 +1,1 @@
-export type { IRenderMemes } from "./types.ts";
+export type { TRenderMemes } from "./types.ts";

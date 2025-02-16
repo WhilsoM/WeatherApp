@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import { ILoginForm } from "../model";
+import { TLoginForm } from "../model";
 
 export const LoginForm = observer(() => {
   const [textError, setTextError] = useState("");
@@ -14,9 +14,9 @@ export const LoginForm = observer(() => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILoginForm>();
+  } = useForm<TLoginForm>();
 
-  const handleLogin = async (data: ILoginForm) => {
+  const handleLogin = async (data: TLoginForm) => {
     console.log(authStore.error);
 
     if (authStore.error === "Invalid credentials") {

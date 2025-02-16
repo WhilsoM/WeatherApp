@@ -1,1 +1,1 @@
-export type { ISideBar } from "./types.ts";
+export type { TSideBar } from "./types.ts";
