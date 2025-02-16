@@ -5,6 +5,7 @@ class AuthStore {
   token: string | null = "";
   isAuthenticated = false;
   error = "";
+  // navigate = useNavigate;
 
   constructor() {
     makeAutoObservable(this);
@@ -54,6 +55,32 @@ class AuthStore {
       } else {
         console.error("Error setting up the request", error.message);
       }
+    }
+  }
+
+  async getProfile(
+    setData: (response: AxiosResponse) => void,
+    setErr: (error: AxiosError) => void
+  ) {
+    try {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        console.error("No token found");
+        return;
+      }
+
+      const response = await axios.get("http://localhost:5000/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setData(response.data);
+    } catch (error: AxiosError) {
+      setErr(error.message);
+
+      console.error("Failed to fetch profile", error.message);
     }
   }
 

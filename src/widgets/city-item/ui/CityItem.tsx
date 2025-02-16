@@ -1,5 +1,5 @@
-import { useTanstackQuery } from "@/app/hooks/";
 import { getWeather } from "@/features/";
+import { useTanstackQuery } from "@/shared/lib/";
 import { motion } from "motion/react";
 import s from "./cityitem.module.scss";
 

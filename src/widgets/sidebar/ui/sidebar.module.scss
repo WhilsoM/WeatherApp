@@ -6,11 +6,17 @@
   background-color: $bg-section;
   border-radius: 30px;
   padding: 20px 15px;
+  display: block;
 
   @media (max-width: $desktop) {
     width: 30%;
   }
+
   @media (max-width: $tablet) {
-    display: none;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 70%;
+    height: 74%;
   }
 }

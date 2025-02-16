@@ -1,12 +1,13 @@
-import { useDebounce, useTanstackQuery } from "@/app/hooks/";
 import { haveGeoStore, latitudeStore, longitudeStore } from "@/app/store/";
 import { geolocation, getWeather } from "@/features/";
+import { useDebounce, useTanstackQuery } from "@/shared/lib/";
 import { CityItem } from "@/widgets/city-item/";
 import { Search } from "@/widgets/search/";
 import { SideBar } from "@/widgets/sidebar/";
 import { observer } from "mobx-react-lite";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import s from "./home.module.scss";
 
 const CITYES = ["лондон", "набережные челны", "нью йорк", "бурж", "Москва"];
@@ -21,9 +22,10 @@ export const Home = observer(() => {
   const {
     longitude: { longitude },
   } = longitudeStore;
-
-  const [inpValue, setInpValue] = useState<string>("Москва");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [inpValue, setInpValue] = useState("Москва");
   const debouncedInput = useDebounce(inpValue, 500);
+  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 
   const shouldFetchWeather = debouncedInput.trim() !== "" || haveGeo;
 
@@ -40,9 +42,7 @@ export const Home = observer(() => {
     geolocation();
   }, []);
 
-  useEffect(() => {
-    if (haveGeo) setInpValue("");
-  }, [haveGeo]);
+  if (haveGeo) setInpValue("");
 
   const displayData = data || {
     location: { name: "Ничего не найдено" },
@@ -97,12 +97,28 @@ export const Home = observer(() => {
             </article>
           </motion.section>
         </section>
+        <button
+          className={s.open_sidebar}
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        >
+          &gt;
+        </button>
+        {isDesktop && (
+          <SideBar>
+            {CITYES.map((item) => (
+              <CityItem item={item} key={item} />
+            ))}
+          </SideBar>
+        )}
 
-        <SideBar>
-          {CITYES.map((item) => (
-            <CityItem item={item} key={item} />
-          ))}
-        </SideBar>
+        {isSidebarOpen && !isDesktop && (
+          <SideBar>
+            <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>X</button>
+            {CITYES.map((item) => (
+              <CityItem item={item} key={item} />
+            ))}
+          </SideBar>
+        )}
       </section>
     </section>
   );

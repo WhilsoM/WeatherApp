@@ -1,9 +1,52 @@
 @use "@/app/styles/variables" as *;
+@use "@/app/styles/mixins" as *;
 
-.burger_menu {
-  display: none;
-
-  @media (max-width: $tablet) {
-    display: flex;
+.menu {
+  @media (min-width: $tablet) {
+    display: none;
   }
+}
+
+.burger-checkbox {
+  display: none;
+}
+
+.burger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+.menu-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 3;
+  background-color: white;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.burger-checkbox:checked + .burger + .menu-list {
+  @include flex("t");
+  @include flex("");
+}
+.active {
+  display: block;
+}
+.menu-item {
+  padding: 10px;
 }

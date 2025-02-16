@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: "ru",
-    debug: false, // если true, то в консоль будет показываться информация i18n
+    debug: false,
     detection: {
       order: ["queryString", "cookie"],
       caches: ["cookie"],

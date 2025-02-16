@@ -1,12 +1,11 @@
 @use "@/app/styles/variables" as *;
+@use "@/app/styles/mixins" as *;
 
 .nav_list {
-  display: flex;
+  @include flex("f");
+
   align-items: center;
   gap: 20px;
-  @media (max-width: 600px) {
-    display: none;
-  }
 }
 
 .nav_list__link {

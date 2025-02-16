@@ -1,5 +1,4 @@
 import { authStore } from "@/app/store/";
-import axios from "axios";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
@@ -16,27 +15,9 @@ export const Profile = observer(() => {
   const navigate = useNavigate();
 
   const fetchProfile = async () => {
-    try {
-      const token = localStorage.getItem("token");
+    await authStore.getProfile(setUserData, setErr);
 
-      if (!token) {
-        console.error("No token found");
-        navigate("/login");
-        return;
-      }
-
-      const response = await axios.get("http://localhost:5000/profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      setUserData(response.data);
-    } catch (error: any) {
-      setErr(error.response.data.message);
-
-      console.error("Failed to fetch profile", error);
-    }
+    if (err === "Network Error") return;
   };
 
   const logoutHandler = () => {
@@ -52,7 +33,9 @@ export const Profile = observer(() => {
   if (!userData) {
     return (
       <>
-        <Link to={"/"}>Home</Link>
+        <Link to={"/register"}>Зарегистрироваться</Link>
+
+        <Link to={"/"}>Главная</Link>
         {!!err && <div> {err} </div>}
 
         <p>Loading...</p>
