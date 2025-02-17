@@ -7,6 +7,7 @@
   border-radius: 30px;
   padding: 20px 15px;
   display: block;
+  overflow: auto;
 
   @media (max-width: $desktop) {
     width: 30%;

@@ -1,6 +1,7 @@
 import { haveGeoStore, latitudeStore, longitudeStore } from "@/app/store/";
 import { geolocation, getWeather } from "@/features/";
 import { useDebounce, useTanstackQuery } from "@/shared/lib/";
+import { LoaderWeatherInfo } from "@/shared/loaders";
 import { CityItem } from "@/widgets/city-item/";
 import { Search } from "@/widgets/search/";
 import { SideBar } from "@/widgets/sidebar/";
@@ -22,6 +23,7 @@ export const Home = observer(() => {
   const {
     longitude: { longitude },
   } = longitudeStore;
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [inpValue, setInpValue] = useState("Москва");
   const debouncedInput = useDebounce(inpValue, 500);
@@ -29,7 +31,7 @@ export const Home = observer(() => {
 
   const shouldFetchWeather = debouncedInput.trim() !== "" || haveGeo;
 
-  const { data } = useTanstackQuery(
+  const { data, isLoading } = useTanstackQuery(
     getWeather,
     shouldFetchWeather ? debouncedInput : "Москва",
     ["weather", debouncedInput, latitude, longitude],
@@ -76,25 +78,29 @@ export const Home = observer(() => {
             animate={{ opacity: 1 }}
             className={s.cards}
           >
-            <article className={s.card}>
-              <img src={"/humidity.png"} alt="humidity" loading="lazy" />
+            {isLoading ? (
+              <LoaderWeatherInfo />
+            ) : (
+              <>
+                <article className={s.card}>
+                  <img src={"/humidity.png"} alt="humidity" loading="lazy" />
 
-              <h3>{current.humidity}%</h3>
-            </article>
-
-            <article className={s.card}>
-              <img
-                src={current.condition.icon}
-                alt={current.condition.text}
-                loading="lazy"
-              />
-              <p>погода</p>
-            </article>
-
-            <article className={s.card}>
-              <img src={"/windy.png"} alt="speed windy" loading="lazy" />
-              <p>{current.wind_mph}mph</p>
-            </article>
+                  <h3>{current.humidity}%</h3>
+                </article>
+                <article className={s.card}>
+                  <img
+                    src={current.condition.icon}
+                    alt={current.condition.text}
+                    loading="lazy"
+                  />
+                  <p>погода</p>
+                </article>
+                <article className={s.card}>
+                  <img src={"/windy.png"} alt="speed windy" loading="lazy" />
+                  <p>{current.wind_mph}mph</p>
+                </article>{" "}
+              </>
+            )}
           </motion.section>
         </section>
         <button
@@ -113,7 +119,12 @@ export const Home = observer(() => {
 
         {isSidebarOpen && !isDesktop && (
           <SideBar>
-            <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>X</button>
+            <button
+              className={s.close_sidebar}
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            >
+              X
+            </button>
             {CITYES.map((item) => (
               <CityItem item={item} key={item} />
             ))}

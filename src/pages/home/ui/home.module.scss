@@ -81,3 +81,21 @@
     display: block;
   }
 }
+
+.close_sidebar {
+  background-color: #fff;
+  padding: 5px 10px;
+  font-size: 17px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  width: 100%;
+  @include flex("");
+
+  &:focus {
+    background-color: red;
+  }
+
+  &:hover {
+    background-color: red;
+  }
+}
