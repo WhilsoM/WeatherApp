@@ -5,7 +5,6 @@ class AuthStore {
   token: string | null = "";
   isAuthenticated = false;
   error = "";
-  // navigate = useNavigate;
 
   constructor() {
     makeAutoObservable(this);

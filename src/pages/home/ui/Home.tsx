@@ -103,6 +103,7 @@ export const Home = observer(() => {
             )}
           </motion.section>
         </section>
+
         <button
           className={s.open_sidebar}
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}

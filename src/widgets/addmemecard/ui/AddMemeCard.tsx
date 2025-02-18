@@ -3,8 +3,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { RenderMemes } from "../../render-memes";
-import { AddMemeForm } from "./AddMemeForm";
 import s from "./addmemecard.module.scss";
+import { AddMemeForm } from "./meme-form/AddMemeForm";
 
 const API_URL = "https://67968bd6bedc5d43a6c58fc6.mockapi.io/memes";
 

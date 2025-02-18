@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { TRegisterForm } from "../model/";
+
 export const RegisterForm = () => {
   const [textError, setTextError] = useState("");
 
@@ -19,8 +20,8 @@ export const RegisterForm = () => {
       setTextError("username занят/email занят");
       return;
     }
-
     const { username, password, email } = data;
+
     await authStore.register(username, password, email);
     return navigate("/");
   };
@@ -53,6 +54,7 @@ export const RegisterForm = () => {
             pattern: /^\S+@\S+$/i,
           })}
         />
+
         <input
           type="password"
           placeholder="password"

@@ -1,9 +1,9 @@
-export type TUseGeolocation {
+export type TUseGeolocation = {
   latitude: number;
   longitude: number;
-}
+};
 
-export type TWeather {
+export type TWeather = {
   location: {
     name: string;
     lat: number;
@@ -20,12 +20,12 @@ export type TWeather {
     };
     wind_mph: number;
   };
-}
+};
 
-export interface MemeCardProps {
+export type MemeCardProps = {
   id: string;
   imageUrl: string;
   userName: string;
   createdAt: string;
   title: string;
-}
+};

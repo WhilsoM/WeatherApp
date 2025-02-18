@@ -1,1 +1,1 @@
-export type { IAddMemeForm } from "./types.ts";
+export type { TAddMemeForm } from "./types.ts";

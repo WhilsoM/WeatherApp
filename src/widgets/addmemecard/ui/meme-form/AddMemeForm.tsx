@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IAddMemeForm } from "../model/";
+import { IAddMemeForm } from "../../model";
 import s from "./addmemecard.module.scss";
 
 export const AddMemeForm: FC<IAddMemeForm> = (props) => {
