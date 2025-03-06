@@ -9,6 +9,10 @@
   display: block;
   overflow: auto;
 
+  &::-webkit-scrollbar {
+    // width: 15px;
+  }
+
   @media (max-width: $desktop) {
     width: 30%;
   }

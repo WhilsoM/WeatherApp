@@ -1,4 +1,4 @@
-import { authStore } from "@/app/store/";
+import { authStore } from "@/store";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";

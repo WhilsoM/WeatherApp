@@ -1,13 +1,12 @@
-import { FC } from "react";
 import { MemeCard } from "../../MemeCard/MemeCard";
 import { TRenderMemes } from "../model/";
 import s from "./rendermemes.module.scss";
 
-export const RenderMemes: FC<TRenderMemes> = ({
+export const RenderMemes = ({
   memeCards,
   handleEdit,
   handleDelete,
-}) => {
+}: TRenderMemes) => {
   return (
     <>
       {memeCards.map((card: any, index: number) => (

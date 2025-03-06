@@ -1,4 +1,4 @@
-import { authStore } from "@/app/store";
+import { authStore } from "@/store";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

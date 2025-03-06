@@ -1,4 +1,4 @@
-import { IWeather } from "@/app/types/types";
+import { IWeather } from "@/types/types";
 import { useQuery } from "@tanstack/react-query";
 
 export const useTanstackQuery = (

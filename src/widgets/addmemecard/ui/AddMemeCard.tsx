@@ -1,4 +1,4 @@
-import { MemeCardProps } from "@/app/types/types";
+import { MemeCardProps } from "@/types/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useRef, useState } from "react";

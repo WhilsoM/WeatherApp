@@ -1,5 +1,5 @@
-import { haveGeoStore, latitudeStore, longitudeStore } from "@/app/store/";
-import { IWeather } from "@/app/types/types";
+import { haveGeoStore, latitudeStore, longitudeStore } from "@/store";
+import { IWeather } from "@/types/types";
 
 export const getWeather = async (city?: string) => {
   const {

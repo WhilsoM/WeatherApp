@@ -1,7 +1,7 @@
-import { haveGeoStore, latitudeStore, longitudeStore } from "@/app/store/";
 import { geolocation, getWeather } from "@/features/";
 import { useDebounce, useTanstackQuery } from "@/shared/lib/";
 import { LoaderWeatherInfo } from "@/shared/loaders";
+import { haveGeoStore, latitudeStore, longitudeStore } from "@/store";
 import { CityItem } from "@/widgets/city-item/";
 import { Search } from "@/widgets/search/";
 import { SideBar } from "@/widgets/sidebar/";

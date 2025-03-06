@@ -1,5 +1,5 @@
-import { haveGeoStore, latitudeStore, longitudeStore } from "@/app/store/";
-import { IUseGeolocation } from "@/app/types/types";
+import { haveGeoStore, latitudeStore, longitudeStore } from "@/store";
+import { IUseGeolocation } from "@/types/types";
 
 export const geolocation = () => {
   const {

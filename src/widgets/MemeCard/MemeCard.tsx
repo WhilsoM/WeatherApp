@@ -1,4 +1,4 @@
-import { MemeCardProps } from "@/app/types/types";
+import { MemeCardProps } from "@/types/types";
 import React from "react";
 import s from "./ui/memecard.module.scss";
 

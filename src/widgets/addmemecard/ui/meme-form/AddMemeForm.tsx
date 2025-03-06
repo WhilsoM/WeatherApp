@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { IAddMemeForm } from "../../model";
-import s from "./addmemecard.module.scss";
+import { TAddMemeForm } from "../../model";
+import s from "../addmemecard.module.scss";
 
-export const AddMemeForm: FC<IAddMemeForm> = (props) => {
+export const AddMemeForm: FC<TAddMemeForm> = (props) => {
   const {
     handleSubmit,
     imageUrl,
