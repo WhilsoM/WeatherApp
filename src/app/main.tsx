@@ -8,7 +8,7 @@ import "../i18n.ts";
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <App />
     </BrowserRouter>
   </QueryClientProvider>

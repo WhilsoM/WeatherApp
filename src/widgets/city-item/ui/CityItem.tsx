@@ -4,9 +4,30 @@ import { motion } from "motion/react";
 import s from "./cityitem.module.scss";
 
 export const CityItem = ({ item = "" }) => {
-  const { data } = useTanstackQuery(getWeather, item, [item]);
+  const { data, isLoading, error } = useTanstackQuery(getWeather, item, [item]);
 
-  if (!data) {
+  if (isLoading) {
+    return (
+      <div className={s.different_city}>
+        <div className={s.city}>
+          <h4>Loading...</h4>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={s.different_city}>
+        <div className={s.city}>
+          <h4>Error loading weather data</h4>
+          <p>{error instanceof Error ? error.message : "Unknown error"}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!data || !data.location || !data.current) {
     return null;
   }
 
@@ -22,19 +43,21 @@ export const CityItem = ({ item = "" }) => {
       className={s.different_city}
     >
       <div className={s.city}>
-        <h4>{location?.name}</h4>
-        <p>{current?.temp_c}&deg;C</p>
+        <h4>{location.name}</h4>
+        <p>{current.temp_c}&deg;C</p>
       </div>
 
       <div className={s.weather}>
-        <img
-          src={current?.condition?.icon}
-          alt={current.condition?.text}
-          loading="lazy"
-        />
+        {current.condition?.icon && (
+          <img
+            src={current.condition.icon}
+            alt={current.condition?.text || "weather icon"}
+            loading="lazy"
+          />
+        )}
         <p>|</p>
         <div className={s.weather_wrapper}>
-          <p>{data?.current?.wind_mph}mph</p>
+          <p>{current.wind_mph}mph</p>
           <img src="/windy.png" alt="windy" loading="lazy" />
         </div>
       </div>

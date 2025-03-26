@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios from "axios";
 import { makeAutoObservable } from "mobx";
 
 class AuthStore {
@@ -12,20 +12,17 @@ class AuthStore {
 
   async login(username: string, password: string) {
     try {
-      const response: AxiosResponse = await axios.post(
-        "http://localhost:5000/login",
-        {
-          username,
-          password,
-        }
-      );
+      const response: any = await axios.post("http://localhost:5000/login", {
+        username,
+        password,
+      });
       this.token = response.data.token;
       this.isAuthenticated = true;
       this.error = "";
 
       if (this.token !== null) localStorage.setItem("token", this.token);
       else console.error("Token is null");
-    } catch (error: AxiosError) {
+    } catch (error: any) {
       if (error.response) {
         this.error = error.response.data.message;
         console.error("Login failed", error.response.data);
@@ -45,7 +42,7 @@ class AuthStore {
         email,
       });
       this.error = "";
-    } catch (error: AxiosError) {
+    } catch (error: any) {
       if (error.response) {
         this.error = error.response.data.message;
         console.error("Login failed", error.response.data);
@@ -58,8 +55,8 @@ class AuthStore {
   }
 
   async getProfile(
-    setData: (response: AxiosResponse) => void,
-    setErr: (error: AxiosError) => void
+    setData: (response: any) => void,
+    setErr: (error: any) => void
   ) {
     try {
       const token = localStorage.getItem("token");
@@ -76,7 +73,7 @@ class AuthStore {
       });
 
       setData(response.data);
-    } catch (error: AxiosError) {
+    } catch (error: any) {
       setErr(error.message);
 
       console.error("Failed to fetch profile", error.message);

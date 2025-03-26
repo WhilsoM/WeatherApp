@@ -1,5 +1,5 @@
 import { haveGeoStore, latitudeStore, longitudeStore } from "@/store";
-import { IWeather } from "@/types/types";
+import { TWeather } from "@/types/types";
 
 export const getWeather = async (city?: string) => {
   const {
@@ -12,22 +12,29 @@ export const getWeather = async (city?: string) => {
     longitude: { longitude },
   } = longitudeStore;
 
-  const URL = `${import.meta.env.VITE_API_URL}&q=${
-    haveGeo && (!city || city.length === 0) ? `${latitude},${longitude}` : city
-  }`;
+  const query =
+    haveGeo && (!city || city.length === 0)
+      ? `${latitude},${longitude}`
+      : encodeURIComponent(city || "");
+
+  const URL = `${import.meta.env.VITE_API_URL}&q=${query}`;
 
   try {
     const response = await fetch(URL);
 
     if (!response.ok) {
-      throw new Error(`Ошибка HTTP: ${response.status}`);
+      const errorData = await response.json().catch(() => null);
+      throw new Error(
+        `HTTP Error: ${response.status}${
+          errorData ? ` - ${JSON.stringify(errorData)}` : ""
+        }`
+      );
     }
 
-    return (await response.json()) as IWeather;
+    const data = await response.json();
+    return data as TWeather;
   } catch (error) {
-    console.log("проблема");
-
-    console.error(error);
+    console.error("Weather API Error:", error);
     throw error;
   }
 };

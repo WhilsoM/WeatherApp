@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { TAdData } from "../model/";
 import s from "./ad.module.scss";
 
@@ -13,8 +13,8 @@ export const Ad = () => {
 
   const { data: ads = [] } = useQuery<TAdData[]>({
     queryKey: ["ads"],
-    queryFn: async () => {
-      const response = await axios.get(API_URL);
+    queryFn: async (): Promise<TAdData[]> => {
+      const response = await axios.get<TAdData[]>(API_URL);
       return response.data;
     },
   });

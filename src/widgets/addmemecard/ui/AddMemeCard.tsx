@@ -44,15 +44,17 @@ export const AddMemeCard = () => {
     isError,
   } = useQuery<MemeCardProps[]>({
     queryKey: ["memes"],
-    queryFn: async () => {
-      const response = await axios.get(API_URL);
+    queryFn: async (): Promise<MemeCardProps[]> => {
+      const response = await axios.get<MemeCardProps[]>(API_URL);
       return response.data;
     },
   });
 
   const addMemeMutation = useMutation({
-    mutationFn: (newMemeCard: Omit<MemeCardProps, "id">) =>
-      axios.post(API_URL, newMemeCard),
+    mutationFn: async (newMemeCard: Omit<MemeCardProps, "id">) => {
+      const response = await axios.post<MemeCardProps>(API_URL, newMemeCard);
+      return response.data;
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["memes"] });
       setImageUrl("");
@@ -65,7 +67,10 @@ export const AddMemeCard = () => {
   });
 
   const deleteMemeMutation = useMutation({
-    mutationFn: (id: string) => axios.delete(`${API_URL}/${id}`),
+    mutationFn: async (id: string) => {
+      const response = await axios.delete(`${API_URL}/${id}`);
+      return response.data;
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["memes"] });
     },
@@ -75,8 +80,13 @@ export const AddMemeCard = () => {
   });
 
   const updatedMemeMutation = useMutation({
-    mutationFn: (updatedMemeCard: MemeCardProps) =>
-      axios.put(`${API_URL}/${updatedMemeCard.id}`, updatedMemeCard),
+    mutationFn: async (updatedMemeCard: MemeCardProps) => {
+      const response = await axios.put<MemeCardProps>(
+        `${API_URL}/${updatedMemeCard.id}`,
+        updatedMemeCard
+      );
+      return response.data;
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["memes"] });
       setEditingCard(null);

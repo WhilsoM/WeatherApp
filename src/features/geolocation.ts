@@ -1,5 +1,5 @@
 import { haveGeoStore, latitudeStore, longitudeStore } from "@/store";
-import { IUseGeolocation } from "@/types/types";
+import { TUseGeolocation } from "@/types/types";
 
 export const geolocation = () => {
   const {
@@ -13,7 +13,7 @@ export const geolocation = () => {
     longitude: { setLongitude },
   } = longitudeStore;
 
-  const onChange = (coords: IUseGeolocation): void => {
+  const onChange = (coords: TUseGeolocation): void => {
     setHaveGeo(true);
 
     setLatitude(coords.latitude);
